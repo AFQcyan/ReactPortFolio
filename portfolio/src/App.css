@@ -1,0 +1,31 @@
+@font-face {
+  font-family: "ONE-Mobile-POP";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+#mainContainer {
+  height: 100vh;
+}
+* {
+  font-family: "ONE-Mobile-POP";
+  text-align: center;
+}
+ul,
+li {
+  list-style: none;
+}
+/* nav start */
+#mainContainer {
+  height: 100vh;
+}
+#Nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10%;
+  height: 100vh;
+  font-size: 64px;
+}
+/* nav end */
