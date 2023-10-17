@@ -8,7 +8,10 @@ const Header = (props) => {
 
   return (
     <Fragment>
-      <Container id="mainContainer">
+      <Container className="Main mainContainer">
+        <Col xs={12}></Col>
+      </Container>
+      <Container className="Nav mainContainer">
         <Col xs={12} id="logoImg"></Col>
         <Col xs={{ span: 8, offset: 2 }}>
           <Nav state={state} stateHandler={stateHandler}></Nav>

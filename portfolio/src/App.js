@@ -1,6 +1,6 @@
 import "./App.css";
 import { React, Fragment, useState } from "react";
-import Main from "./components/Main";
+import Main from "./components/Index";
 
 function App() {
   const [state, setState] = useState([

@@ -5,9 +5,6 @@
   font-weight: normal;
   font-style: normal;
 }
-#mainContainer {
-  height: 100vh;
-}
 * {
   font-family: "ONE-Mobile-POP";
   text-align: center;
@@ -16,9 +13,25 @@ ul,
 li {
   list-style: none;
 }
-/* nav start */
-#mainContainer {
+.mainContainer {
   height: 100vh;
+}
+/* Main Start */
+.Main.mainContainer {
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+/* nav start */
+.Nav.mainContainer {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
 }
 #Nav {
   display: flex;
