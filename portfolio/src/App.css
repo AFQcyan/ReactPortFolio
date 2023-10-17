@@ -24,8 +24,49 @@ li {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 10%;
+  gap: 2%;
   height: 100vh;
   font-size: 64px;
+}
+#Nav * {
+  transition: 0.5s;
+}
+#Nav > li {
+  height: 15vh;
+}
+#Nav > li > ul {
+  width: max-content;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: max-content;
+}
+#Nav > li > ul > li {
+  overflow: hidden;
+  height: 6.25vh;
+}
+#Nav .nav-seperate {
+  position: absolute;
+  width: 120%;
+  top: 50%;
+  left: 50%;
+  height: 6px;
+  background-color: #ff0000;
+  /* transform-origin: left; */
+  transform: translate(-45%, -50%) scaleX(0%);
+  opacity: 0;
+}
+#Nav > li > ul > li:last-child {
+  line-height: 4px;
+}
+#Nav > li > ul:hover > li {
+  transform: skewX(10deg);
+  color: white;
+  text-shadow: -2px 0 #ff0000, 0 2px #ff0000, 2px 0 #ff0000, 0 -2px #ff0000;
+}
+#Nav > li > ul:hover > .nav-seperate {
+  transform: translate(-45%, -50%) scaleX(100%);
+  opacity: 1;
+  width: 120%;
 }
 /* nav end */
