@@ -5,6 +5,9 @@
   font-weight: normal;
   font-style: normal;
 }
+html {
+  /* font-size: 1.1vh; */
+}
 * {
   font-family: "ONE-Mobile-POP";
   text-align: center;
@@ -39,7 +42,7 @@ li {
   justify-content: center;
   gap: 2%;
   height: 100vh;
-  font-size: 64px;
+  font-size: 8vh;
 }
 #Nav * {
   transition: 0.5s;
@@ -70,7 +73,7 @@ li {
   opacity: 0;
 }
 #Nav > li > ul > li:first-child {
-  line-height: 120px;
+  line-height: 155%;
 }
 #Nav > li > ul > li:last-child {
   line-height: 0px;
