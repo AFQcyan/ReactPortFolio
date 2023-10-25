@@ -8,9 +8,9 @@ const Header = (props) => {
 
   return (
     <Fragment>
-      <Container className="Main mainContainer">
+      {/* <Container className="Main mainContainer">
         <Col xs={12}></Col>
-      </Container>
+      </Container> */}
       <Container className="Nav mainContainer">
         <Col xs={12} id="logoImg"></Col>
         <Col xs={{ span: 8, offset: 2 }}>

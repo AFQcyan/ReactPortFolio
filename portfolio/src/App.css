@@ -65,12 +65,15 @@ li {
   left: 50%;
   height: 6px;
   background-color: #ff0000;
-  /* transform-origin: left; */
+  transform-origin: left;
   transform: translate(-45%, -50%) scaleX(0%);
   opacity: 0;
 }
+#Nav > li > ul > li:first-child {
+  line-height: 120px;
+}
 #Nav > li > ul > li:last-child {
-  line-height: 4px;
+  line-height: 0px;
 }
 #Nav > li > ul:hover > li {
   transform: skewX(10deg);
