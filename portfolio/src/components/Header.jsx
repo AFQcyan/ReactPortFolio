@@ -3,10 +3,9 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 // components
 import Nav from "./Nav";
-import Main from "./Index";
+import Main from "./IndexPage";
 const Header = (props) => {
   const { state, stateHandler } = props;
-
   return (
     <Fragment>
       <Container className="Main mainContainer">

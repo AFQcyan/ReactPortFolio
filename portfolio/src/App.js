@@ -1,6 +1,6 @@
 import "./App.css";
 import { React, Fragment, useState } from "react";
-import Main from "./components/Index";
+import IndexPage from "./components/IndexPage";
 
 function App() {
   const [state, setState] = useState([
@@ -27,7 +27,7 @@ function App() {
   };
   return (
     <div className="App">
-      <Main state={state} stateHandler={stateHandler}></Main>
+      <IndexPage state={state} stateHandler={stateHandler}></IndexPage>
     </div>
   );
 }

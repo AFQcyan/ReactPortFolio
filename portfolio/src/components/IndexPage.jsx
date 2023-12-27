@@ -1,7 +1,7 @@
 import { React, Fragment, useState } from "react";
 import Header from "./Header";
 
-const Main = (props) => {
+const IndexPage = (props) => {
   const { state, stateHandler } = props;
 
   const toggleBtnOnClick = () => {
@@ -27,4 +27,4 @@ const Main = (props) => {
   return <Header state={state} stateHandler={stateHandler}></Header>;
 };
 
-export default Main;
+export default IndexPage;
