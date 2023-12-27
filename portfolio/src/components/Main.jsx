@@ -10,7 +10,10 @@ const Main = (props) => {
         <div className="textContainer">
           <h3>안녕하세요.</h3>
           <h1 id="changeText">
-            <b>성장하는 개발자</b>
+            <span>성장하는 개발자</span>
+            <span>포기하지 않는 도전자</span>
+            <span>문제해결력을 가진 </span>
+            <span></span>
           </h1>
           <h2>
             <b>박재형</b>입니다.
