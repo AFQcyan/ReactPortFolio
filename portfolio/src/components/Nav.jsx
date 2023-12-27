@@ -11,37 +11,57 @@ const Nav = (props) => {
         <ul id="Nav">
           <li className="each-nav">
             <ul>
-              <li>MAIN</li>
+              <li>
+                <a href="#">MAIN</a>
+              </li>
               <div className="nav-seperate"></div>
-              <li>MAIN</li>
+              <li>
+                <a href="#">MAIN</a>
+              </li>
             </ul>
           </li>
           <li className="each-nav">
             <ul>
-              <li>ABOUT ME</li>
+              <li>
+                <a href="#">ABOUT ME</a>
+              </li>
               <div className="nav-seperate"></div>
-              <li>ABOUT ME</li>
+              <li>
+                <a href="#">ABOUT ME</a>
+              </li>
             </ul>
           </li>
           <li className="each-nav">
             <ul>
-              <li>SERVICES</li>
+              <li>
+                <a href="#">SERVICES</a>
+              </li>
               <div className="nav-seperate"></div>
-              <li>SERVICES</li>
+              <li>
+                <a href="#">SERVICES</a>
+              </li>
             </ul>
           </li>
           <li className="each-nav">
             <ul>
-              <li>PORTFOLIO</li>
+              <li>
+                <a href="#">PORTFOLIO</a>
+              </li>
               <div className="nav-seperate"></div>
-              <li>PORTFOLIO</li>
+              <li>
+                <a href="#">PORTFOLIO</a>
+              </li>
             </ul>
           </li>
           <li className="each-nav">
             <ul>
-              <li>CONTACT</li>
+              <li>
+                <a href="#">CONTACT</a>
+              </li>
               <div className="nav-seperate"></div>
-              <li>CONTACT</li>
+              <li>
+                <a href="#">CONTACT</a>
+              </li>
             </ul>
           </li>
         </ul>

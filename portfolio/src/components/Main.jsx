@@ -6,7 +6,17 @@ const Main = (props) => {
 
   return (
     <Fragment>
-      <div id="indexContainer"></div>
+      <div id="indexContainer">
+        <div className="textContainer">
+          <h3>안녕하세요.</h3>
+          <h1 id="changeText">
+            <b>성장하는 개발자</b>
+          </h1>
+          <h2>
+            <b>박재형</b>입니다.
+          </h2>
+        </div>
+      </div>
     </Fragment>
   );
 };

@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 // components
 import Nav from "./Nav";
-import Main from "./IndexPage";
+import Main from "./Main";
 const Header = (props) => {
   const { state, stateHandler } = props;
   return (
@@ -11,12 +11,14 @@ const Header = (props) => {
       <Container className="Main mainContainer">
         <Col xs={12}>
           <Main state={state} stateHandler={stateHandler}></Main>
+          {/* <Main></Main> */}
         </Col>
       </Container>
       <Container className="Nav mainContainer">
         <Col xs={12} id="logoImg"></Col>
         <Col xs={{ span: 8, offset: 2 }}>
           <Nav state={state} stateHandler={stateHandler}></Nav>
+          {/* <Nav></Nav> */}
         </Col>
       </Container>
     </Fragment>
