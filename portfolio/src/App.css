@@ -140,3 +140,6 @@ img {
   justify-content: center;
   flex-direction: column;
 }
+#indexContainer #changeText span {
+  opacity: 0;
+}
