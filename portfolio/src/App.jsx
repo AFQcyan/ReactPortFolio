@@ -1,4 +1,4 @@
-import "./App.css";
+import "./resources/css/App.css";
 import { React, Fragment, useState } from "react";
 import IndexPage from "./components/IndexPage";
 

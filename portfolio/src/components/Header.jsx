@@ -8,18 +8,17 @@ const Header = (props) => {
   const { state, stateHandler } = props;
   return (
     <Fragment>
-      <Container className="Main mainContainer">
-        <Col xs={12}>
+      <Container className="ViewPortContainer">
+        <Container className="Main mainContainer">
           <Main state={state} stateHandler={stateHandler}></Main>
-          {/* <Main></Main> */}
-        </Col>
-      </Container>
-      <Container className="Nav mainContainer">
-        <Col xs={12} id="logoImg"></Col>
-        <Col xs={{ span: 8, offset: 2 }}>
-          <Nav state={state} stateHandler={stateHandler}></Nav>
-          {/* <Nav></Nav> */}
-        </Col>
+        </Container>
+        <Container className="Nav mainContainer">
+          <Col xs={12} id="logoImg"></Col>
+          <Col xs={{ span: 8, offset: 2 }}>
+            <Nav state={state} stateHandler={stateHandler}></Nav>
+            {/* <Nav></Nav> */}
+          </Col>
+        </Container>
       </Container>
     </Fragment>
   );
