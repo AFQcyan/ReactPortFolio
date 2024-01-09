@@ -4,20 +4,43 @@ import Col from "react-bootstrap/Col";
 // components
 import Nav from "./Nav";
 import Main from "./Main";
+import MoveToMenu from "./MoveToMenu";
 const Header = (props) => {
   const { state, stateHandler } = props;
   return (
     <Fragment>
+      <MoveToMenu state={state} stateHandler={stateHandler}></MoveToMenu>
       <Container className="ViewPortContainer">
-        <Container className="Main mainContainer">
-          <Main state={state} stateHandler={stateHandler}></Main>
-        </Container>
         <Container className="Nav mainContainer">
           <Col xs={12} id="logoImg"></Col>
           <Col xs={{ span: 8, offset: 2 }}>
             <Nav state={state} stateHandler={stateHandler}></Nav>
             {/* <Nav></Nav> */}
           </Col>
+        </Container>
+        <Container className="Main mainContainer">
+          <Main state={state} stateHandler={stateHandler}></Main>
+        </Container>
+        <Container className="Contents A mainContainer">
+          <p>A</p>
+        </Container>
+        <Container className="Contents A mainContainer">
+          <p>B</p>
+        </Container>
+        <Container className="Contents A mainContainer">
+          <p>C</p>
+        </Container>
+        <Container className="Contents A mainContainer">
+          <p>D</p>
+        </Container>
+        <Container className="Contents A mainContainer">
+          <p>E</p>
+        </Container>
+        <Container className="Contents A mainContainer">
+          <p>F</p>
+        </Container>
+        <Container className="Contents A mainContainer">
+          <p>G</p>
         </Container>
       </Container>
     </Fragment>

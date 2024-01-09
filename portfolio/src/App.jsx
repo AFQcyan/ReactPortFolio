@@ -3,7 +3,13 @@ import { React, Fragment, useState } from "react";
 import IndexPage from "./components/IndexPage";
 
 function App() {
-  const [state, setState] = useState([]);
+  const [state, setState] = useState([
+    {
+      //index 0: currentPage;
+      currentPage: 0,
+      isOnMenu: false,
+    },
+  ]);
 
   const stateHandler = (updates) => {
     setState((prevState) => {
