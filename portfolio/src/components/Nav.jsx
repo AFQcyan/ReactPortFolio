@@ -14,18 +14,10 @@ const Nav = (props) => {
               <li>
                 <a href="#">MAIN</a>
               </li>
-              <div className="nav-seperate"></div>
-              <li>
-                <a href="#">MAIN</a>
-              </li>
             </ul>
           </li>
           <li className="each-nav">
             <ul>
-              <li>
-                <a href="#">ABOUT ME</a>
-              </li>
-              <div className="nav-seperate"></div>
               <li>
                 <a href="#">ABOUT ME</a>
               </li>
@@ -34,11 +26,7 @@ const Nav = (props) => {
           <li className="each-nav">
             <ul>
               <li>
-                <a href="#">SERVICES</a>
-              </li>
-              <div className="nav-seperate"></div>
-              <li>
-                <a href="#">SERVICES</a>
+                <a href="#">SKILLS</a>
               </li>
             </ul>
           </li>
@@ -47,18 +35,10 @@ const Nav = (props) => {
               <li>
                 <a href="#">PORTFOLIO</a>
               </li>
-              <div className="nav-seperate"></div>
-              <li>
-                <a href="#">PORTFOLIO</a>
-              </li>
             </ul>
           </li>
           <li className="each-nav">
             <ul>
-              <li>
-                <a href="#">CONTACT</a>
-              </li>
-              <div className="nav-seperate"></div>
               <li>
                 <a href="#">CONTACT</a>
               </li>

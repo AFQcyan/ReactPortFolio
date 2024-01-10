@@ -4,6 +4,7 @@ import Col from "react-bootstrap/Col";
 // components
 import Nav from "./Nav";
 import Main from "./Main";
+import AboutMe from "./AboutMe";
 import MoveToMenu from "./MoveToMenu";
 const Header = (props) => {
   const { state, stateHandler } = props;
@@ -21,9 +22,7 @@ const Header = (props) => {
         <Container className="Main mainContainer">
           <Main state={state} stateHandler={stateHandler}></Main>
         </Container>
-        <Container className="Contents A mainContainer">
-          <p>A</p>
-        </Container>
+        <Container className="Contents AboutMe mainContainer"></Container>
         <Container className="Contents A mainContainer">
           <p>B</p>
         </Container>
