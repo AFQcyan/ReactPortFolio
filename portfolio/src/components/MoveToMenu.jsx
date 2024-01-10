@@ -6,23 +6,11 @@ const MoveToMenu = (props) => {
   const { state, stateHandler } = props;
 
   //   scroll
-  let isScrolling = false;
   function handleScroll() {
-    isScrolling = true;
-
-    // 스크롤 중인지 여부를 확인하고 필요한 작업 수행
-    // 여기에서는 간단히 콘솔에 로그 출력
-
-    // 스크롤이 멈추면 상태를 다시 false로 설정
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(function () {
-      isScrolling = false;
-    }, 100); // 200 밀리초 동안 스크롤이 없으면 스크롤이 멈춘 것으로 판단
+    return window.scrollY % window.innerHeight != 0;
   }
 
   // 스크롤 이벤트 리스너 등록
-  let scrollTimeout;
-  document.addEventListener("scroll", handleScroll);
   //   scroll
 
   window.addEventListener("mousedown", (e) => {
@@ -30,27 +18,28 @@ const MoveToMenu = (props) => {
       e.preventDefault();
     }
   });
-  window.addEventListener("scroll", (e) => {
-    e.preventDefault();
-  });
+  document.onscroll = event => {
+    clearTimeout(window.scrollEndTimer)
+    window.scrollEndTimer = setTimeout(function() {
+      stateHandler([{
+        index: 0,
+        properties: {currentPage: (parseInt(window.scrollY / window.innerHeight))}
+      }])
+    }, 100)
+  }
   window.addEventListener(
     "wheel",
     (e) => {
-      let currPage = state[0].currentPage;
       e.preventDefault();
-      if (isScrolling) {
+      let currPage = state[0].currentPage;
+      if (handleScroll()) {
+        currPage = currPage;
       } else if (e.deltaY < 0) {
         currPage = currPage === 0 ? 0 : currPage - 1;
       } else {
-        currPage = currPage === 5 ? 5 : currPage + 1;
+        currPage = currPage === 7 ? 7 : currPage + 1;
       }
       window.scrollTo({ left: 0, top: currPage * window.innerHeight });
-      stateHandler([
-        {
-          index: 0,
-          properties: { currentPage: currPage },
-        },
-      ]);
     },
     { passive: false }
   );
