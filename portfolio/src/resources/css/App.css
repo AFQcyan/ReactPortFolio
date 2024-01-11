@@ -390,3 +390,7 @@ img {
     max-height: 0px;
   }
 }
+/* AboutMe */
+#aboutContainer {
+  height: 100vh;
+}

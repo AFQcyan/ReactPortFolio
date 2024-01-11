@@ -30,9 +30,8 @@ const MoveToMenu = (props) => {
           },
         },
       ]);
-    }, 1);
+    }, 5);
   };
-  console.log(state[0].currentPage);
   window.addEventListener(
     "wheel",
     (e) => {

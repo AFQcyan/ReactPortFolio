@@ -22,7 +22,9 @@ const Header = (props) => {
         <Container className="Main mainContainer">
           <Main state={state} stateHandler={stateHandler}></Main>
         </Container>
-        <Container className="Contents AboutMe mainContainer"></Container>
+        <Container className="Contents AboutMe mainContainer">
+          <AboutMe state={state} stateHandler={stateHandler}></AboutMe>
+        </Container>
         <Container className="Contents A mainContainer">
           <p>B</p>
         </Container>
