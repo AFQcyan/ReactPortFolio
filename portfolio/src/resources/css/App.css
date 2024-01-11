@@ -29,6 +29,10 @@ html {
   -ms-overflow-style: none;
   font-size: 1.1vw;
   /* scroll-behavior: smooth; */
+  -webkit-user-select: none !important;
+  -moz-user-select: -moz-none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
 }
 html::-webkit-scrollbar {
   display: none;
@@ -38,6 +42,10 @@ body {
   width: 100%;
   height: max-content;
   /* scroll-behavior: smooth; */
+  -webkit-user-select: none !important;
+  -moz-user-select: -moz-none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
 }
 #root {
   width: 100%;
@@ -393,4 +401,40 @@ img {
 /* AboutMe */
 #aboutContainer {
   height: 100vh;
+  display: flex;
+  align-items: center;
+  gap: 5%;
+}
+#aboutContainer .myFace {
+  width: 30%;
+}
+#aboutContainer .myFace img {
+  width: 100%;
+}
+#aboutContainer .myInfo {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  gap: 7.5%;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+}
+#aboutContainer .myInfo h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+#aboutContainer .allTheInfos {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 2%;
+  grid-row-gap: 15%;
+  height: max-content;
+}
+#aboutContainer .allTheInfos .text-info-container {
+  width: 100%;
+}
+#aboutContainer .allTheInfos .text-info-container h1 {
+  font-size: 2rem;
 }

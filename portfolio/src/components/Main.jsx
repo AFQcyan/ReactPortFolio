@@ -23,7 +23,7 @@ const Main = (props) => {
                 <span>교내 전공심화동아리에서 2년간 활동</span>
               </div>
             </div>
-            <div className="objInner style" style={{ left: "12%", top: "57%" }}>
+            <div className="objInner style" style={{ left: "12%", top: "67%" }}>
               <div>
                 <i class="fa-solid fa-check-to-slot"></i>
                 <span>초1 ~ 고2까지 1년 제외 전 학년 반장/부반장 당선</span>
@@ -33,7 +33,7 @@ const Main = (props) => {
           <div className="followingObj">
             <img src={target} alt="문제의 핵심을 파악하는 능력!" />
 
-            <div className="objInner style" style={{ left: "60%", top: "68%" }}>
+            <div className="objInner style" style={{ left: "70%", top: "70%" }}>
               <div>
                 <i class="fas fa-trophy"></i>
                 <span>교내 창의 알고리즘 대회 3년 연속 수상</span>
@@ -81,13 +81,13 @@ const Main = (props) => {
           <div className="followingObj">
             <img src={expert} alt="한분야의 전문가가 되고 싶은자!" />
 
-            <div className="objInner style" style={{ left: "54%", top: "24%" }}>
+            <div className="objInner style" style={{ left: "54%", top: "19%" }}>
               <div>
                 <i class="fa-solid fa-code-merge"></i>
                 <span>개발자 SNS 를 통해 풀스택 신기술 학습중</span>
               </div>
             </div>
-            <div className="objInner style" style={{ left: "15%", top: "45%" }}>
+            <div className="objInner style" style={{ left: "25%", top: "75%" }}>
               <div>
                 <i class="fa-solid fa-sack-dollar"></i>
                 <span>실제 운영되고 있는 사이트 외주 경험 있음</span>
@@ -97,7 +97,7 @@ const Main = (props) => {
           <div className="followingObj">
             <img src={planning} alt="나를 더 나은 사람으로 발전시키는!" />
 
-            <div className="objInner style" style={{ left: "52%", top: "17%" }}>
+            <div className="objInner style" style={{ left: "67%", top: "17%" }}>
               <div>
                 <i class="fa-regular fa-clock"></i>
                 <span>하루 루틴을 지키며 나를 만들어가는중!</span>
@@ -125,7 +125,6 @@ const Main = (props) => {
             </h2>
           </div>
         </div>
-        <div id="contents"></div>
       </div>
     </Fragment>
   );

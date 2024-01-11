@@ -6,11 +6,17 @@ import Nav from "./Nav";
 import Main from "./Main";
 import AboutMe from "./AboutMe";
 import MoveToMenu from "./MoveToMenu";
+import Skills from "./Skills";
+import ParallaxObject from "./ParallaxObject";
 const Header = (props) => {
   const { state, stateHandler } = props;
   return (
     <Fragment>
-      <MoveToMenu state={state} stateHandler={stateHandler}></MoveToMenu>
+      <MoveToMenu
+        state={state}
+        stateHandler={stateHandler}
+        nav={Nav}
+      ></MoveToMenu>
       <Container className="ViewPortContainer">
         <Container className="Nav mainContainer">
           <Col xs={12} id="logoImg"></Col>
@@ -23,10 +29,15 @@ const Header = (props) => {
           <Main state={state} stateHandler={stateHandler}></Main>
         </Container>
         <Container className="Contents AboutMe mainContainer">
-          <AboutMe state={state} stateHandler={stateHandler}></AboutMe>
+          <AboutMe state={state} stateHandler={stateHandler}>
+            <ParallaxObject
+              state={state}
+              stateHandler={stateHandler}
+            ></ParallaxObject>
+          </AboutMe>
         </Container>
-        <Container className="Contents A mainContainer">
-          <p>B</p>
+        <Container className="Contents Skills mainContainer">
+          <Skills></Skills>
         </Container>
         <Container className="Contents A mainContainer">
           <p>C</p>
