@@ -11,7 +11,7 @@ function App() {
     },
   ]);
 
-  document.oncontextmenu = function () {
+  document.onContextMenu = function () {
     return false;
   };
 
@@ -20,7 +20,7 @@ function App() {
   omitformtags = omitformtags.join("|");
 
   function disableselect(e) {
-    if (omitformtags.indexOf(e.target.tagName.toLowerCase()) == -1)
+    if (omitformtags.indexOf(e.target.tagName.toLowerCase()) === -1)
       return false;
   }
 
