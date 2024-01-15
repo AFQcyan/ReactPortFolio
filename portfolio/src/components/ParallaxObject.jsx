@@ -44,33 +44,39 @@ import ToolImgPsd from "../resources/image/MyLang/Tool/psd.png";
 const ParallaxObject = (props) => {
   const { skillIdx } = props;
 
-
-
-  const rotateContainer  = document.getElementById('parallax-container');
+  const rotateContainer = document.getElementById("parallax-container");
   const threeDContainers = document.querySelectorAll(".skills-container");
 
   const isView = (skillIdx, containerIdx, container) => {
-    if(
-      Math.abs((skillIdx % 6) - containerIdx) <= 1
-      || (skillIdx % 6 === 0 && containerIdx === 5)
-      || (skillIdx % 6 === 5 && containerIdx === 0)
-      ) {
-      container.style.opacity = (skillIdx  % 6 === containerIdx) ? 1 : 0.1;
+    if (Math.abs((skillIdx % 6) - containerIdx) === 0) {
+      container.style.opacity = 1;
     } else {
-      container.style.opacity = 0;
+      container.style.opacity = 0.1;
     }
-  }
+  };
 
+  const Jalpha = () => {
     threeDContainers.forEach((x, i) => {
-      x.style.transform = `translateX(-50%) rotateY(${(-skillIdx + i) * 60}deg) translateZ(${x.clientWidth + (document.body.clientWidth / 10)}px)`
+      x.style.transform = `rotateZ(5.5deg) translateX(-50%) translateY(-50%) rotateY(${
+        (-skillIdx + i) * 60
+      }deg) translateZ(${x.clientWidth + document.body.clientWidth / 1}px)`;
       isView(skillIdx, i, x);
       // rotateContainer.style.transform = `rotateY(${skillIdx * 60}deg) perspective(6800px)`
     });
+  };
+
+  Jalpha();
+  window.onload = () => {
+    console.log("이건 뒤졌노?");
+    Jalpha();
+  };
+  window.onresize = () => {
+    Jalpha();
+  };
 
   return (
     <Fragment>
       <div id="parallax-container">
-        {/* <div className="grid-container before"> */}
         <div className="skills-container">
           <h2 className="skills-title">Front-End</h2>
           <div className="skills-detail">
