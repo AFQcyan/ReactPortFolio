@@ -15,6 +15,7 @@ const Skills = (props) => {
 
   useEffect(() => {
     const wheelContainer = document.getElementById('skills-container');
+    
   })
 
   return (
