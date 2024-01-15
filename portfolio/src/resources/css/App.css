@@ -449,30 +449,33 @@ img {
 #skill-container h1 {
   font-weight: bold;
   font-size: 4rem;
-  padding-top: 4rem;
+  padding-top: 6.6vh;
 }
 /* parallax */
 #parallax-container {
   width: 100%;
   margin-top: 2.5rem;
-  height: 100%;
-  overflow: hidden;
+  height: 94vh;
+  transition: 1s;
+  /* overflow: hidden; */
   width: 100%;
   display: grid !important;
-  margin-left: 1.666667%;
   grid-template-columns: repeat(6, 30%);
   gap: 3.3333%;
   position: relative;
+  transform-style: preserve-3d;
+  animation: rotate-axios 5s linear infinite;
+  transform: perspective(6800px);
 }
 #parallax-container .skills-container {
-  width: 27.5%;
+  width: 25%;
   background-color: #fff;
   padding: 1.5rem;
   height: 75% !important;
   border-radius: 1rem;
   position: absolute;
   top: 0;
-  right: -30%;
+  left: 50%;
   transition: 1s;
 }
 #parallax-container .skills-title {
@@ -488,6 +491,9 @@ img {
   grid-template-rows: repeat(5, 1fr);
   padding-top: 0.5rem;
 }
+
+
+
 #parallax-container .skills-container:nth-of-type(2) .skills-detail {
   grid-template-rows: repeat(4, 1fr);
 }

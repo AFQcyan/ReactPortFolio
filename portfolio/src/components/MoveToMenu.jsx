@@ -1,4 +1,4 @@
-import { React, Fragment } from "react";
+import { React, Fragment, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 
@@ -32,6 +32,26 @@ const MoveToMenu = (props) => {
       ]);
     }, 5);
   };
+  const effectEvent = (e) => {
+    e.preventDefault();
+      let currPage = state[0].currentPage;
+      if (!handleScroll()) {
+        if (e.deltaY < 0) {
+          currPage = currPage === 0 ? 0 : currPage - 1;
+        } else {
+          currPage = currPage === 7 ? 7 : currPage + 1;
+        }
+        window.scrollTo({ left: 0, top: currPage * window.innerHeight });
+      }
+   }
+  useEffect(() => {
+    window.addEventListener('wheel',effectEvent,{ passive: false });
+
+    // 컴포넌트가 언마운트되면 이벤트 핸들러를 제거
+    return () => {
+      window.removeEventListener('wheel', effectEvent, { passive: false });
+    };
+  }, []);
   window.addEventListener(
     "wheel",
     (e) => {

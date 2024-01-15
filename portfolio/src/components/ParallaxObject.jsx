@@ -1,4 +1,4 @@
-import { React, Fragment } from "react";
+import { React, Fragment, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -44,20 +44,28 @@ import ToolImgPsd from "../resources/image/MyLang/Tool/psd.png";
 const ParallaxObject = (props) => {
   const { skillIdx } = props;
 
-  const detectedContainers = document.querySelectorAll(".skills-container");
 
-  detectedContainers.forEach((x, i) => {
-    if (i - skillIdx === 1) {
-      x.style.right = 0;
-    } else if (i - skillIdx === -1) {
-      x.style.right = "100%";
-      x.style.transform = "translateX(100%) rotate(180deg)";
-      x.style.transformOrigin = "left";
-    } else if (i - skillIdx === 0) {
-      x.style.right = "50%";
-      x.style.transform = "translateX(50%)";
+
+  const rotateContainer  = document.getElementById('parallax-container');
+  const threeDContainers = document.querySelectorAll(".skills-container");
+
+  const isView = (skillIdx, containerIdx, container) => {
+    if(
+      Math.abs((skillIdx % 6) - containerIdx) <= 1
+      || (skillIdx % 6 === 0 && containerIdx === 5)
+      || (skillIdx % 6 === 5 && containerIdx === 0)
+      ) {
+      container.style.opacity = (skillIdx  % 6 === containerIdx) ? 1 : 0.1;
+    } else {
+      container.style.opacity = 0;
     }
-  });
+  }
+
+    threeDContainers.forEach((x, i) => {
+      x.style.transform = `translateX(-50%) rotateY(${(-skillIdx + i) * 60}deg) translateZ(${x.clientWidth + (document.body.clientWidth / 10)}px)`
+      isView(skillIdx, i, x);
+      // rotateContainer.style.transform = `rotateY(${skillIdx * 60}deg) perspective(6800px)`
+    });
 
   return (
     <Fragment>
