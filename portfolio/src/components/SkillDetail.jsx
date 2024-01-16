@@ -7,6 +7,7 @@ const SkillDetail = (e) => {
     <Fragment>
       <div id="skill-detail-container">
         <h1 className="eng">SKILLS</h1>
+        <div id="skill-detail-contents"></div>
       </div>
     </Fragment>
   );
