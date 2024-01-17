@@ -583,17 +583,35 @@ img {
 #skill-count input {
   display: none;
 }
+
+
 #skill-count label {
   position: relative;
-  width: 1.5rem;
-  height: 1.5rem;
+  min-width: 2.25rem;
+  height: 2.25rem;
   background-color: #fff;
-  border-radius: 100%;
-  transition: 0.75s;
+  border: 5px solid #000;
+  border-radius: 10000px;
+  /* transition:0.75s; */
+  overflow: hidden;
+  display: flex;
+  gap: 0;
+  align-items: center;
+  justify-content: center;
 }
-#skill-count input:checked + label {
-  width: 6rem;
-  height: 3rem;
-  border: 2px solid red;
-  border-radius: 0;
+#skill-count label .slide-text {
+  width: 0px;
+  transition: 0.75s;
+  opacity: 0;
+}
+#skill-count label .slide-text p {
+  color: black;
+}
+#skill-count input:checked + div label {
+  max-width: max-content;
+}
+#skill-count input:checked + div > label > .slide-text {
+  width:  8rem;
+  overflow: visible;
+  opacity: 1;
 }
