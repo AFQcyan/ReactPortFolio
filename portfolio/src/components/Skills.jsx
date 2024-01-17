@@ -3,7 +3,6 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 
 import ParallaxObject from "./ParallaxObject";
-import SkillDetail from "./SkillDetail";
 import SkillCount from "./SkillCount";
 
 // 여긴 약간 슬라이드 식으로 e A b -> a B c -> b C d -> d E a 식으로,
@@ -70,15 +69,16 @@ const Skills = (props) => {
   return (
     <Fragment>
       <div id="skill-container">
+        <h1 className="eng">SKILLS</h1>
         <div id="parallax-container" ref={parallaxRef}>
           <SkillCount
             skillIdx={skillIdx}
             setSkillIdx={setSKillIdx}
           ></SkillCount>
-          <ParallaxObject skillIdx={skillIdx}></ParallaxObject>
+          <div className="parallaxs">
+            <ParallaxObject skillIdx={skillIdx}></ParallaxObject>
+          </div>
         </div>
-        {/* <button onClick={plus}>A</button> */}
-        <SkillDetail></SkillDetail>
       </div>
     </Fragment>
   );

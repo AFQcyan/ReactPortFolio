@@ -49,7 +49,13 @@ const ParallaxObject = (props) => {
   const { skillIdx } = props;
 
   const threeDContainers = document.querySelectorAll(".skills-container");
-
+  const ruleCalc = (targetNum) => {
+    if (targetNum >= 0) {
+      return targetNum % 6;
+    } else {
+      return ((targetNum % 6) + 6) % 6;
+    }
+  };
   const isView = (skillIdx, containerIdx, container) => {
     console.log("para: " + skillIdx);
     if (
@@ -57,16 +63,19 @@ const ParallaxObject = (props) => {
       (skillIdx < 0 && ((skillIdx % 6) + 6) % 6 === containerIdx)
     ) {
       container.style.opacity = 1;
+      container.style.zIndex = 1000000;
     } else {
-      container.style.opacity = 0.1;
+      container.style.opacity = 0.05;
+      container.style.zIndex = 1000000 - 1;
     }
   };
 
   const Jalpha = () => {
     threeDContainers.forEach((x, i) => {
-      x.style.transform = `rotateZ(5.5deg) translateX(-50%) translateY(-50%) rotateY(${
-        (-skillIdx + i) * 60
-      }deg) translateZ(${x.clientWidth + document.body.clientWidth / 1}px)`;
+      x.style.transform = `rotateZ(6.5deg) translateX(-50%) 
+      translateY(${i === ruleCalc(skillIdx) ? -55 : -45}%) rotateY(${
+        (-skillIdx + i) * 60 - 5
+      }deg) translateZ(${x.clientWidth + document.body.clientWidth / 7}px)`;
       isView(skillIdx, i, x);
       // rotateContainer.style.transform = `rotateY(${skillIdx * 60}deg) perspective(6800px)`
     });

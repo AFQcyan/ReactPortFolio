@@ -4,7 +4,6 @@ import Col from "react-bootstrap/Col";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import ParallaxObject from "./ParallaxObject";
-import SkillDetail from "./SkillDetail";
 
 const SkillCount = (props) => {
   const { skillIdx, setSkillIdx } = props;
@@ -13,11 +12,13 @@ const SkillCount = (props) => {
 
   const clickButton = (e) => {
     console.log(e.target);
-    setSkillIdx(parseInt(e.target.dataset.idx));
+    setSkillIdx(() => {
+      const idxNum = parseInt(e.target.dataset.idx);
+      return 6 + (skillIdx - (skillIdx % 6)) - (6 - idxNum);
+    });
   };
 
   // stateChangeBtn.addEventListener()
-  
 
   const ruleCalc = (targetNum) => {
     if (targetNum >= 0) {
@@ -27,14 +28,12 @@ const SkillCount = (props) => {
     }
   };
 
-  
-
   useEffect(() => {
     Array.from(document.querySelectorAll("#skill-count input")).filter(
       (x) => x.dataset.idx === "0"
     )[0].checked = true;
   }, []);
-  
+
   useEffect(() => {
     console.log(`effect : ${skillIdx}`);
     const currSlide = Array.from(
@@ -45,77 +44,126 @@ const SkillCount = (props) => {
 
   return (
     <Fragment>
-      <div id="skill-count" >
-        <input type="radio" id="slide1" name="slide" data-idx="0" onClick={clickButton}/>
+      <div id="skill-count">
+        <input
+          type="radio"
+          id="slide1"
+          name="slide"
+          data-idx="0"
+          onClick={clickButton}
+        />
         <div>
-        <label htmlFor="slide1">
-          <div className="slide-text">
-            <p>Front-end</p>
-          </div>
-          <div className="slide-icon">
-          <FontAwesomeIcon icon="fa-solid fa-caret-right" style={{color: "#FFD43B"}} />
-          </div>
-        </label>
+          <label htmlFor="slide1">
+            <div className="slide-text">
+              <p>Front</p>
+            </div>
+            <div className="slide-icon">
+              <FontAwesomeIcon
+                icon="fa-solid fa-caret-right"
+                style={{ color: "#FFD43B" }}
+              />
+            </div>
+          </label>
         </div>
-        <input type="radio" id="slide2" name="slide" data-idx="1" onClick={clickButton}/>
+        <input
+          type="radio"
+          id="slide2"
+          name="slide"
+          data-idx="1"
+          onClick={clickButton}
+        />
         <div>
-
-        <label htmlFor="slide2">
-          <div className="slide-text">
-            <p>Back-end</p>
-          </div>
-          <div className="slide-icon">
-          <FontAwesomeIcon icon="fa-solid fa-caret-right" style={{color: "#FFD43B"}} />
-          </div>
-        </label>
+          <label htmlFor="slide2">
+            <div className="slide-text">
+              <p>Back-end</p>
+            </div>
+            <div className="slide-icon">
+              <FontAwesomeIcon
+                icon="fa-solid fa-caret-right"
+                style={{ color: "#FFD43B" }}
+              />
+            </div>
+          </label>
         </div>
-        <input type="radio" id="slide3" name="slide" data-idx="2" onClick={clickButton}/>
+        <input
+          type="radio"
+          id="slide3"
+          name="slide"
+          data-idx="2"
+          onClick={clickButton}
+        />
         <div>
-
-        <label htmlFor="slide3">
-          <div className="slide-text">
-            <p>Server</p>
-          </div>
-          <div className="slide-icon">
-          <FontAwesomeIcon icon="fa-solid fa-caret-right" style={{color: "#FFD43B"}} />
-          </div>
-        </label>
+          <label htmlFor="slide3">
+            <div className="slide-text">
+              <p>Server</p>
+            </div>
+            <div className="slide-icon">
+              <FontAwesomeIcon
+                icon="fa-solid fa-caret-right"
+                style={{ color: "#FFD43B" }}
+              />
+            </div>
+          </label>
         </div>
-        <input type="radio" id="slide4" name="slide" data-idx="3" onClick={clickButton}/>
+        <input
+          type="radio"
+          id="slide4"
+          name="slide"
+          data-idx="3"
+          onClick={clickButton}
+        />
         <div>
-
-        <label htmlFor="slide4">
-          <div className="slide-text">
-            <p>IDE</p>
-          </div>
-          <div className="slide-icon">
-          <FontAwesomeIcon icon="fa-solid fa-caret-right" style={{color: "#FFD43B"}} />
-          </div>
-        </label>
+          <label htmlFor="slide4">
+            <div className="slide-text">
+              <p>IDE</p>
+            </div>
+            <div className="slide-icon">
+              <FontAwesomeIcon
+                icon="fa-solid fa-caret-right"
+                style={{ color: "#FFD43B" }}
+              />
+            </div>
+          </label>
         </div>
-        <input type="radio" id="slide5" name="slide" data-idx="4" onClick={clickButton}/>
+        <input
+          type="radio"
+          id="slide5"
+          name="slide"
+          data-idx="4"
+          onClick={clickButton}
+        />
         <div>
-
-        <label htmlFor="slide5">
-          <div className="slide-text">
-            <p>Tool</p>
-          </div>
-          <div className="slide-icon">
-          <FontAwesomeIcon icon="fa-solid fa-caret-right" style={{color: "#FFD43B"}} />
-          </div>
-        </label>
+          <label htmlFor="slide5">
+            <div className="slide-text">
+              <p>Tool</p>
+            </div>
+            <div className="slide-icon">
+              <FontAwesomeIcon
+                icon="fa-solid fa-caret-right"
+                style={{ color: "#FFD43B" }}
+              />
+            </div>
+          </label>
         </div>
-        <input type="radio" id="slide6" name="slide" data-idx="5" onClick={clickButton}/>
+        <input
+          type="radio"
+          id="slide6"
+          name="slide"
+          data-idx="5"
+          onClick={clickButton}
+        />
         <div>
-
-        <label htmlFor="slide6">
-          <div className="slide-text">
-            <p>Cerf</p>
-          </div>
-          <div className="slide-icon">
-          <FontAwesomeIcon icon="fa-solid fa-caret-right" style={{color: "#FFD43B"}} />
-          </div>
-        </label>
+          <label htmlFor="slide6">
+            <div className="slide-text">
+              <p>Cerf</p>
+            </div>
+            <div className="slide-icon">
+              <FontAwesomeIcon
+                icon="fa-solid fa-caret-right"
+                style={{ color: "#FFD43B" }}
+              />
+            </div>
+          </label>
         </div>
       </div>
     </Fragment>

@@ -10,6 +10,18 @@ const MoveToMenu = (props) => {
     return window.scrollY % window.innerHeight !== 0;
   }
 
+  useEffect(() => {
+    window.scrollTo({ left: 0, top: 0 });
+    stateHandler([
+      {
+        index: 0,
+        properties: {
+          currentPage: 0,
+        },
+      },
+    ]);
+  }, []);
+
   // 스크롤 이벤트 리스너 등록
   //   scroll
 
@@ -34,22 +46,22 @@ const MoveToMenu = (props) => {
   };
   const effectEvent = (e) => {
     e.preventDefault();
-      let currPage = state[0].currentPage;
-      if (!handleScroll()) {
-        if (e.deltaY < 0) {
-          currPage = currPage === 0 ? 0 : currPage - 1;
-        } else {
-          currPage = currPage === 7 ? 7 : currPage + 1;
-        }
-        window.scrollTo({ left: 0, top: currPage * window.innerHeight });
+    let currPage = state[0].currentPage;
+    if (!handleScroll()) {
+      if (e.deltaY < 0) {
+        currPage = currPage === 0 ? 0 : currPage - 1;
+      } else {
+        currPage = currPage === 7 ? 7 : currPage + 1;
       }
-   }
+      window.scrollTo({ left: 0, top: currPage * window.innerHeight });
+    }
+  };
   useEffect(() => {
-    window.addEventListener('wheel',effectEvent,{ passive: false });
+    window.addEventListener("wheel", effectEvent, { passive: false });
 
     // 컴포넌트가 언마운트되면 이벤트 핸들러를 제거
     return () => {
-      window.removeEventListener('wheel', effectEvent, { passive: false });
+      window.removeEventListener("wheel", effectEvent, { passive: false });
     };
   }, []);
   window.addEventListener(

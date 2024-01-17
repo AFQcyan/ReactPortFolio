@@ -453,16 +453,22 @@ img {
   display: flex;
   justify-content: center;
   position: relative;
+  align-items: center;
   /* gap: 7.5%; */
 }
 #skill-container h1 {
   font-weight: bold;
-  font-size: 4rem;
+  font-size: 18rem;
+  font-style: italic;
   padding-top: 6.6vh;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  opacity: 10%;
 }
 /* parallax */
 #parallax-container {
-  width: 55% !important;
+  width: 100% !important;
   height: 100vh;
   transition: 1s;
   /* overflow: hidden; */
@@ -470,21 +476,24 @@ img {
   position: relative;
   transform-style: preserve-3d;
   animation: rotate-axios 5s linear infinite;
-  transform: perspective(23600px);
+  transform: perspective(1600px);
   top: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 25%;
 }
 #parallax-container .skills-container {
-  width: 55%;
+  width: 35%;
   background-color: #fff;
   padding: 1.5rem;
   height: 75% !important;
   border-radius: 1rem;
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
+  left: 80%;
+  /* transform: translateX(-50%) translateY(-50%); */
   transition: 1s;
-  transform-origin: left;
+  /* transform-origin: left; */
 }
 #parallax-container .skills-title {
   color: rgba(0, 0, 0, 0.6);
@@ -562,13 +571,10 @@ img {
   object-fit: cover;
 }
 /* skill-detail */
-#skill-detail-container {
-  width: 45%;
-}
 /* skill-count */
 #skill-count {
   position: absolute;
-  width: 3%;
+  width: 50%;
   height: 70%;
   top: 50%;
   transform: translateY(-50%);
@@ -577,42 +583,59 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  z-index: 100;
+  align-items: start;
+  z-index: 999999999;
 }
 #skill-count input {
   display: none;
 }
 
-
 #skill-count label {
   position: relative;
   min-width: 2.25rem;
   height: 2.25rem;
-  background-color: #fff;
-  border: 5px solid #000;
+  /* border: 3px solid var(--border-color); */
+  border: 3px solid white;
+  background-color: #222;
   border-radius: 10000px;
   /* transition:0.75s; */
   overflow: hidden;
   display: flex;
+  /* font-size: 0; */
   gap: 0;
+  font-weight: bold;
   align-items: center;
   justify-content: center;
+  z-index: 999999999;
 }
 #skill-count label .slide-text {
   width: 0px;
   transition: 0.75s;
   opacity: 0;
+  transform-origin: left;
 }
 #skill-count label .slide-text p {
-  color: black;
+  color: var(--text-color);
   white-space: nowrap;
 }
 #skill-count input:checked + div label {
   max-width: max-content;
+  font-size: 1rem;
 }
 #skill-count input:checked + div > label > .slide-text {
-  width:  8rem;
+  width: 8rem;
   overflow: visible;
   opacity: 1;
+}
+#skill-count .slide-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: var(--border-color);
+  border-radius: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#skill-count input:checked + div .slide-icon {
+  margin-right: 0.15rem;
 }
