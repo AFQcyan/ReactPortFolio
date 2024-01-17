@@ -606,6 +606,7 @@ img {
 }
 #skill-count label .slide-text p {
   color: black;
+  white-space: nowrap;
 }
 #skill-count input:checked + div label {
   max-width: max-content;
