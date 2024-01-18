@@ -84,8 +84,20 @@ const MoveToMenu = (props) => {
   function checkMenuState(e) {
     if (e.target.checked) {
       document.querySelector(".Nav.mainContainer").classList.add("active");
+      stateHandler([
+        {
+          index: 0,
+          properties: { isOnMenu: true },
+        },
+      ]);
     } else {
       document.querySelector(".Nav.mainContainer").classList.remove("active");
+      stateHandler([
+        {
+          index: 0,
+          properties: { isOnMenu: false },
+        },
+      ]);
     }
   }
   return (

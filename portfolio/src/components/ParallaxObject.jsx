@@ -57,7 +57,6 @@ const ParallaxObject = (props) => {
     }
   };
   const isView = (skillIdx, containerIdx, container) => {
-    console.log("para: " + skillIdx);
     if (
       (skillIdx >= 0 && skillIdx % 6 === containerIdx) ||
       (skillIdx < 0 && ((skillIdx % 6) + 6) % 6 === containerIdx)

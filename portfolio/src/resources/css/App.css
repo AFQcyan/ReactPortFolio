@@ -18,6 +18,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+.container {
+  padding: 0;
+}
 :root {
   --normal-bg: #111;
 }
@@ -122,6 +125,7 @@ img {
   gap: 2%;
   height: 100vh;
   font-size: 3.6rem;
+  z-index: 1000000;
 }
 #Nav * {
   font-weight: bold;
@@ -193,6 +197,19 @@ img {
   align-items: center;
 }
 /* nav end */
+#page-side-line {
+  position: fixed;
+  height: 100%;
+  z-index: 1000000;
+  transition: 0.75s;
+  display: flex;
+  font-size: 6rem;
+}
+#dummyWidth {
+  top: 0;
+  width: 100%;
+  height: 0;
+}
 /* index */
 #indexContainer {
   width: 100%;
@@ -329,7 +346,7 @@ img {
   transform: translateY(-50%);
   font-size: 100px;
   cursor: pointer;
-  z-index: 110000;
+  z-index: 1100000;
 }
 #moveToMenu svg {
   transition: 0.5s;
@@ -458,7 +475,7 @@ img {
 }
 #skill-container h1 {
   font-weight: bold;
-  font-size: 18rem;
+  font-size: 15rem;
   font-style: italic;
   padding-top: 6.6vh;
   position: absolute;
@@ -483,7 +500,7 @@ img {
   gap: 25%;
 }
 #parallax-container .skills-container {
-  width: 35%;
+  width: 30%;
   background-color: #fff;
   padding: 1.5rem;
   height: 75% !important;
@@ -608,6 +625,10 @@ img {
   justify-content: center;
   z-index: 999999999;
 }
+#skill-count label:hover .slide-text {
+  transition: 0.75s;
+  width: 2rem;
+}
 #skill-count label .slide-text {
   width: 0px;
   transition: 0.75s;
@@ -638,4 +659,15 @@ img {
 }
 #skill-count input:checked + div .slide-icon {
   margin-right: 0.15rem;
+}
+/* scrollControl */
+#scroll-down {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  transition: 0.5s;
+  background-color: #fff;
 }

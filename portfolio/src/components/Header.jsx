@@ -1,23 +1,54 @@
-import { React, Fragment } from "react";
+import { React, Fragment, useRef, useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 // components
+
 import Nav from "./Nav";
 import Main from "./Main";
 import AboutMe from "./AboutMe";
 import MoveToMenu from "./MoveToMenu";
+import PageSideLine from "./PageSideLine";
 import Skills from "./Skills";
 import ParallaxObject from "./ParallaxObject";
 const Header = (props) => {
   const { state, stateHandler } = props;
+  const [viewWidth, setviewWidth] = useState(0);
+
+  const viewContainerRef = useRef(null);
+
+  const widthResize = () => {
+    setviewWidth(viewContainerRef.current.clientWidth);
+  };
+
+  useEffect(() => {
+    // setviewWidth(viewContainerRef.current.clientWidth);
+    widthResize();
+    window.addEventListener("resize", widthResize);
+
+    return () => {
+      window.removeEventListener("resize", widthResize);
+    };
+  }, []);
+
   return (
     <Fragment>
+      <PageSideLine
+        isLeft={true}
+        contWidth={viewWidth}
+        isMenuOn={state[0].isOnMenu}
+      ></PageSideLine>
+      <PageSideLine
+        isLeft={false}
+        contWidth={viewWidth}
+        isMenuOn={state[0].isOnMenu}
+      ></PageSideLine>
       <MoveToMenu
         state={state}
         stateHandler={stateHandler}
         nav={Nav}
       ></MoveToMenu>
-      <Container className="ViewPortContainer">
+      <Container className="ViewPortContainer" style={{ padding: 0 }}>
+        <div id="dummyWidth" ref={viewContainerRef}></div>
         <Container className="Nav mainContainer">
           <Col xs={12} id="logoImg"></Col>
           <Col xs={{ span: 8, offset: 2 }}>
@@ -37,9 +68,9 @@ const Header = (props) => {
           </AboutMe>
         </Container>
         <Container className="Contents Skills mainContainer">
-          <Skills></Skills>
+          <Skills state={state} stateHandler={stateHandler}></Skills>
         </Container>
-        <Container className="Contents A mainContainer">
+        <Container className="Contents Archives mainContainer">
           <p>C</p>
         </Container>
         <Container className="Contents A mainContainer">
