@@ -64,7 +64,7 @@ const ParallaxObject = (props) => {
       container.style.opacity = 1;
       container.style.zIndex = 1000000;
     } else {
-      container.style.opacity = 0.05;
+      container.style.opacity = 0.03;
       container.style.zIndex = 1000000 - 1;
     }
   };

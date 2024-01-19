@@ -1,16 +1,8 @@
 import "./resources/css/App.css";
-import { React, Fragment, useState } from "react";
+import { React } from "react";
 import IndexPage from "./components/IndexPage";
 
 function App() {
-  const [state, setState] = useState([
-    {
-      //index 0: currentPage;
-      currentPage: 0,
-      isOnMenu: false,
-    },
-  ]);
-
   document.onContextMenu = function () {
     return false;
   };
@@ -34,22 +26,6 @@ function App() {
     document.onmousedown = disableselect;
     document.onmouseup = reEnable;
   }
-
-  const stateHandler = (updates) => {
-    setState((prevState) => {
-      const newState = [...prevState];
-
-      updates.forEach((update) => {
-        const { index, properties } = update;
-        newState[index] = {
-          ...newState[index],
-          ...properties,
-        };
-      });
-
-      return newState;
-    });
-  };
   return (
     <div
       className="App"
@@ -58,7 +34,7 @@ function App() {
       ondragstart="return false"
       onkeydown="return false"
     >
-      <IndexPage state={state} stateHandler={stateHandler}></IndexPage>
+      <IndexPage></IndexPage>
     </div>
   );
 }

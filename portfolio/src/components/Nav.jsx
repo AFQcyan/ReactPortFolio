@@ -5,8 +5,6 @@ import Col from "react-bootstrap/Col";
 import MoveToMenu from "./MoveToMenu";
 
 const Nav = (props) => {
-  const { state, stateHandler } = props;
-
   //쐐기 마냥 나가는거 어떤데 ㄹㅇ 난 괜찮아 뵈는디.
   return (
     <Fragment>

@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 
 const MoveToMenu = (props) => {
-  const { state, stateHandler, nav } = props;
+  const { currPage, currPageHandler, setIsOnMenu } = props;
 
   //   scroll
   function handleScroll() {
@@ -12,14 +12,7 @@ const MoveToMenu = (props) => {
 
   useEffect(() => {
     window.scrollTo({ left: 0, top: 0 });
-    stateHandler([
-      {
-        index: 0,
-        properties: {
-          currentPage: 0,
-        },
-      },
-    ]);
+    currPageHandler(0);
   }, []);
 
   // 스크롤 이벤트 리스너 등록
@@ -34,26 +27,19 @@ const MoveToMenu = (props) => {
   document.onscroll = (e) => {
     clearTimeout(scrollEndTimer);
     scrollEndTimer = setTimeout(function () {
-      stateHandler([
-        {
-          index: 0,
-          properties: {
-            currentPage: Math.round(window.scrollY / window.innerHeight),
-          },
-        },
-      ]);
+      currPageHandler(Math.round(window.scrollY / window.innerHeight));
     }, 5);
   };
   const effectEvent = (e) => {
     e.preventDefault();
-    let currPage = state[0].currentPage;
     if (!handleScroll()) {
+      let currentPage = currPage;
       if (e.deltaY < 0) {
-        currPage = currPage === 0 ? 0 : currPage - 1;
+        currentPage = currentPage === 0 ? 0 : currentPage - 1;
       } else {
-        currPage = currPage === 7 ? 7 : currPage + 1;
+        currentPage = currentPage === 7 ? 7 : currentPage + 1;
       }
-      window.scrollTo({ left: 0, top: currPage * window.innerHeight });
+      window.scrollTo({ left: 0, top: currentPage * window.innerHeight });
     }
   };
   useEffect(() => {
@@ -68,14 +54,14 @@ const MoveToMenu = (props) => {
     "wheel",
     (e) => {
       e.preventDefault();
-      let currPage = state[0].currentPage;
+      let currentPage = currPage;
       if (!handleScroll()) {
         if (e.deltaY < 0) {
-          currPage = currPage === 0 ? 0 : currPage - 1;
+          currentPage = currentPage === 0 ? 0 : currentPage - 1;
         } else {
-          currPage = currPage === 7 ? 7 : currPage + 1;
+          currentPage = currentPage === 7 ? 7 : currentPage + 1;
         }
-        window.scrollTo({ left: 0, top: currPage * window.innerHeight });
+        window.scrollTo({ left: 0, top: currentPage * window.innerHeight });
       }
     },
     { passive: false }
@@ -84,20 +70,10 @@ const MoveToMenu = (props) => {
   function checkMenuState(e) {
     if (e.target.checked) {
       document.querySelector(".Nav.mainContainer").classList.add("active");
-      stateHandler([
-        {
-          index: 0,
-          properties: { isOnMenu: true },
-        },
-      ]);
+      setIsOnMenu(true);
     } else {
       document.querySelector(".Nav.mainContainer").classList.remove("active");
-      stateHandler([
-        {
-          index: 0,
-          properties: { isOnMenu: false },
-        },
-      ]);
+      setIsOnMenu(false);
     }
   }
   return (

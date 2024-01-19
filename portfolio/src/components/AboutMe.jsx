@@ -5,7 +5,6 @@ import Col from "react-bootstrap/Col";
 import myImage from "../resources/image/67CV7J6s7ZiV.png";
 
 const AboutMe = (props) => {
-  const { state, stateHandler } = props;
   const [age, setAge] = useState(() => {
     const birthDate = new Date("2006/11/23");
     const today = new Date();

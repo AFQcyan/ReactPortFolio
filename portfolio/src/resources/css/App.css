@@ -197,13 +197,28 @@ img {
   align-items: center;
 }
 /* nav end */
-#page-side-line {
+/* #page-side-line {
   position: fixed;
   height: 100%;
   z-index: 1000000;
   transition: 0.75s;
   display: flex;
   font-size: 6rem;
+} */
+#mouse-track-img {
+  width: 2.5rem;
+  height: 2.5rem;
+  position: fixed;
+  z-index: 9999999;
+  pointer-events: none;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #222;
+  border: 2px solid #fff;
+  border-radius: 100%;
+  transition: rotate 0.75s;
 }
 #dummyWidth {
   top: 0;
@@ -501,7 +516,7 @@ img {
 }
 #parallax-container .skills-container {
   width: 30%;
-  background-color: #fff;
+  border: 1px solid white;
   padding: 1.5rem;
   height: 75% !important;
   border-radius: 1rem;
@@ -510,12 +525,13 @@ img {
   left: 80%;
   /* transform: translateX(-50%) translateY(-50%); */
   transition: 1s;
+  background-color: #fff;
   /* transform-origin: left; */
 }
 #parallax-container .skills-title {
-  color: rgba(0, 0, 0, 0.6);
+  color: black;
   font-weight: bold;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 2px solid black;
   width: max-content;
   margin: 0 auto;
 }
@@ -660,14 +676,52 @@ img {
 #skill-count input:checked + div .slide-icon {
   margin-right: 0.15rem;
 }
-/* scrollControl */
-#scroll-down {
-  position: absolute;
-  bottom: 0;
-  left: 0;
+/* Archive */
+#archive-container {
   width: 100%;
-  height: 0;
-  overflow: hidden;
-  transition: 0.5s;
-  background-color: #fff;
+  height: 100vh;
+}
+#archive-container > .archive-header {
+  padding-top: 5rem;
+}
+#archive-container h1 {
+  font-weight: bold;
+}
+#archive-contents {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
+  height: calc(80% - 5rem);
+}
+#archive-contents .archive-each {
+  width: 15%;
+  /* border: 3px solid var(--border-color); */
+  border: 3px solid var(--icon-border);
+  border-radius: 100%;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+#archive-contents label {
+  z-index: 1000000;
+}
+#archive-contents img {
+  width: 100%;
+}
+.archive-each > div {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: var(--icon-border);
+  border-radius: 100px;
+  transition: 0.75s;
+}
+.archive-each > input {
+  display: none;
+}
+.archive-each:hover > div {
+  scale: var(--own-scale);
 }

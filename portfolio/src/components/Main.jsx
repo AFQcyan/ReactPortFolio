@@ -9,8 +9,6 @@ import challange from "../resources/image/challange.jpg";
 import expert from "../resources/image/expert.jpg";
 import planning from "../resources/image/planning.jpg";
 const Main = (props) => {
-  const { state, stateHandler } = props;
-
   return (
     <Fragment>
       <div id="indexContainer">

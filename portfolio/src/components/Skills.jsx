@@ -8,7 +8,7 @@ import SkillCount from "./SkillCount";
 // 여긴 약간 슬라이드 식으로 e A b -> a B c -> b C d -> d E a 식으로,
 // 슬라이드 식으로 + Parallax 을 쓰까면 되지 않을까?
 const Skills = (props) => {
-  const { state, stateHandler } = props;
+  const { setMouseRotateDeg, mousePos } = props;
   const [skillIdx, setSKillIdx] = useState(0);
 
   const wheelNumRef = useRef(null);
@@ -62,6 +62,16 @@ const Skills = (props) => {
   useEffect(() => {
     wheelNumRef.current = parseInt(skillIdx);
   }, [skillIdx]);
+
+  useEffect(() => {
+    parallaxRef.current.addEventListener("mouseover", (e) => {
+      setMouseRotateDeg(-90);
+    });
+
+    parallaxRef.current.addEventListener("mouseout", (e) => {
+      setMouseRotateDeg(0);
+    });
+  });
   // useEffect(() => {
   //   const wheelContainer = document.getElementById('skills-container');
 

@@ -11,7 +11,6 @@ const SkillCount = (props) => {
   const stateChangeBtn = useRef(null);
 
   const clickButton = (e) => {
-    console.log(e.target);
     setSkillIdx(() => {
       const idxNum = parseInt(e.target.dataset.idx);
       return 6 + (skillIdx - (skillIdx % 6)) - (6 - idxNum);
@@ -35,7 +34,6 @@ const SkillCount = (props) => {
   }, []);
 
   useEffect(() => {
-    console.log(`effect : ${skillIdx}`);
     const currSlide = Array.from(
       document.querySelectorAll("#skill-count input")
     ).filter((x) => parseInt(x.dataset.idx) === ruleCalc(skillIdx));
