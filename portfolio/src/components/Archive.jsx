@@ -8,11 +8,20 @@ import github from "../resources/image/MyLang/Archive/Github.png";
 import tStory from "../resources/image/MyLang/Archive/tStory.png";
 import notion from "../resources/image/MyLang/Archive/Notion.png";
 
+// components
+
+import ArchiveDetail from "./ArchiveDetail";
+
 const Archive = (props) => {
   const { viewWidth } = props;
+
+  const documentRef = useRef(null);
+
   const githubRef = useRef(null);
-  const notionRef = useRef(null);
-  const tStoryRef = useRef(null);
+
+  const divScale = [2000, 2400, 2900, 3400, 3900];
+
+  const [isDetailOn, setIsDetailOn] = useState([false, false, false]);
 
   // window.github = githubRef.current;
   // window.notion = notionRef.current;
@@ -24,11 +33,24 @@ const Archive = (props) => {
     });
   }, [viewWidth]);
 
-  const isSiteGrow = (ref) => {
-    const fillArr = Array.from(ref.current.childNodes).filter((x) => {
-      return x.classList.contains("bg");
+  const isSiteGrow = (targetIdx) => {
+    const fillArr = Array.from(documentRef.current.childNodes)
+      .filter((x) => {
+        return x.classList.contains("archive-each");
+      })
+      .map((x) => {
+        return Array.from(x.childNodes).filter((x) => {
+          return x.classList.contains("is-label");
+        });
+      });
+    fillArr.forEach((x) => {
+      x[0].style.opacity = 0;
     });
-    console.log(fillArr);
+    setIsDetailOn(
+      isDetailOn.map((x, i) => {
+        return i === targetIdx;
+      })
+    );
   };
   return (
     <Fragment>
@@ -37,123 +59,124 @@ const Archive = (props) => {
           <FontAwesomeIcon icon="fa-solid fa-download" size="2x" />
           <h1>ARCHIVE</h1>
         </div>
-        <div id="archive-contents">
+        <div id="archive-contents" ref={documentRef}>
           <div
-            ref={githubRef}
             className="archive-each"
             style={{
               "--icon-border": "#9b59b6",
             }}
+            ref={githubRef}
           >
-            <div
-              className="first bg"
-              style={{ "--own-scale": "2000%", opacity: "100%" }}
-            ></div>
-            <div
-              className="second bg"
-              style={{ "--own-scale": "2400%", opacity: "60%" }}
-            ></div>
-            <div
-              className="third bg"
-              style={{ "--own-scale": "2900%", opacity: "45%" }}
-            ></div>
-            <div
-              className="fourth bg"
-              style={{ "--own-scale": "3400%", opacity: "35%" }}
-            ></div>
-            <div
-              className="fifth bg"
-              style={{ "--own-scale": "3900%", opacity: "20%" }}
-            ></div>
             <input
-              type="checkbox"
+              type="radio"
               name="onSite"
               id="github"
               onChange={() => {
-                isSiteGrow(githubRef);
+                isSiteGrow(0);
               }}
             />
-            <label htmlFor="github">
+            <label htmlFor="github" className="is-label">
               <img src={github} alt="github" title="github" />
             </label>
+            <div
+              className="first bg"
+              style={{ "--own-scale": `${divScale[0]}%`, opacity: "100%" }}
+            ></div>
+            <div
+              className="second bg"
+              style={{ "--own-scale": `${divScale[1]}%`, opacity: "60%" }}
+            ></div>
+            <div
+              className="third bg"
+              style={{ "--own-scale": `${divScale[2]}%`, opacity: "45%" }}
+            ></div>
+            <div
+              className="fourth bg"
+              style={{ "--own-scale": `${divScale[3]}%`, opacity: "35%" }}
+            ></div>
+            <div
+              className="fifth bg"
+              style={{ "--own-scale": `${divScale[4]}%`, opacity: "20%" }}
+            ></div>
+            <ArchiveDetail isDetailOn={isDetailOn} />
           </div>
           <div
-            ref={notionRef}
             className="archive-each"
             style={{
               "--icon-border": "white",
             }}
           >
-            <div
-              className="first bg"
-              style={{ "--own-scale": "2000%", opacity: "100%" }}
-            ></div>
-            <div
-              className="second bg"
-              style={{ "--own-scale": "2400%", opacity: "60%" }}
-            ></div>
-            <div
-              className="third bg"
-              style={{ "--own-scale": "2900%", opacity: "45%" }}
-            ></div>
-            <div
-              className="fourth bg"
-              style={{ "--own-scale": "3400%", opacity: "35%" }}
-            ></div>
-            <div
-              className="fifth bg"
-              style={{ "--own-scale": "3900%", opacity: "20%" }}
-            ></div>
             <input
-              type="checkbox"
+              type="radio"
               name="onSite"
               id="notion"
               onChange={() => {
-                isSiteGrow(notionRef);
+                isSiteGrow(1);
               }}
             />
-            <label htmlFor="notion">
+            <label htmlFor="notion" className="is-label">
               <img src={notion} alt="notion" title="notion" />
             </label>
+            <div
+              className="first bg"
+              style={{ "--own-scale": `${divScale[0]}%`, opacity: "100%" }}
+            ></div>
+            <div
+              className="second bg"
+              style={{ "--own-scale": `${divScale[1]}%`, opacity: "60%" }}
+            ></div>
+            <div
+              className="third bg"
+              style={{ "--own-scale": `${divScale[2]}%`, opacity: "45%" }}
+            ></div>
+            <div
+              className="fourth bg"
+              style={{ "--own-scale": `${divScale[3]}%`, opacity: "35%" }}
+            ></div>
+            <div
+              className="fifth bg"
+              style={{ "--own-scale": `${divScale[4]}%`, opacity: "20%" }}
+            ></div>
+            <ArchiveDetail isDetailOn={isDetailOn} />
           </div>
           <div
             className="archive-each"
             style={{
               "--icon-border": "#ea5220",
             }}
-            ref={tStoryRef}
           >
-            <div
-              className="first bg"
-              style={{ "--own-scale": "2000%", opacity: "100%" }}
-            ></div>
-            <div
-              className="second bg"
-              style={{ "--own-scale": "2400%", opacity: "60%" }}
-            ></div>
-            <div
-              className="third bg"
-              style={{ "--own-scale": "2900%", opacity: "45%" }}
-            ></div>
-            <div
-              className="fourth bg"
-              style={{ "--own-scale": "3400%", opacity: "35%" }}
-            ></div>
-            <div
-              className="fifth bg"
-              style={{ "--own-scale": "3900%", opacity: "20%" }}
-            ></div>
             <input
-              type="checkbox"
+              type="radio"
               name="onSite"
               id="tStory"
               onChange={() => {
-                isSiteGrow(tStoryRef);
+                isSiteGrow(2);
               }}
             />
-            <label htmlFor="tStory">
+            <label htmlFor="tStory" className="is-label">
               <img src={tStory} alt="tStory" title="tStory" />
             </label>
+            <div
+              className="first bg"
+              style={{ "--own-scale": `${divScale[0]}%`, opacity: "100%" }}
+            ></div>
+            <div
+              className="second bg"
+              style={{ "--own-scale": `${divScale[1]}%`, opacity: "60%" }}
+            ></div>
+            <div
+              className="third bg"
+              style={{ "--own-scale": `${divScale[2]}%`, opacity: "45%" }}
+            ></div>
+            <div
+              className="fourth bg"
+              style={{ "--own-scale": `${divScale[3]}%`, opacity: "35%" }}
+            ></div>
+            <div
+              className="fifth bg"
+              style={{ "--own-scale": `${divScale[4]}%`, opacity: "20%" }}
+            ></div>
+            <ArchiveDetail isDetailOn={isDetailOn} />
           </div>
         </div>
       </div>
