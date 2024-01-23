@@ -31,7 +31,47 @@ const Archive = (props) => {
     document.querySelectorAll(".archive-each").forEach((x) => {
       x.style.height = githubRef.current.clientWidth + "px";
     });
+
+    document.querySelectorAll("#archive-detail button").forEach((x) => {
+      console.log(x.scrollWidth);
+      x.style.height = x.clientWidth + 6 + "px";
+    });
   }, [viewWidth]);
+
+  const preventEvent = (e) => {
+    console.log(e.target.id + isDetailOn);
+    if (isDetailOn.includes(true)) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
+  };
+
+  useEffect(() => {
+    const ref = documentRef.current;
+
+    ref.addEventListener("wheel", preventEvent, {
+      passive: false,
+    });
+    if (!isDetailOn.includes(true)) {
+      const fillArr = Array.from(ref.childNodes)
+        .filter((x) => {
+          return x.classList.contains("archive-each");
+        })
+        .map((x) => {
+          return Array.from(x.childNodes).filter((x) => {
+            return x.classList.contains("is-label");
+          });
+        });
+      fillArr.forEach((x) => {
+        x[0].style.opacity = 1;
+      });
+    }
+    return () => {
+      ref.removeEventListener("wheel", preventEvent, {
+        passive: false,
+      });
+    };
+  }, [isDetailOn]);
 
   const isSiteGrow = (targetIdx) => {
     const fillArr = Array.from(documentRef.current.childNodes)
@@ -98,7 +138,12 @@ const Archive = (props) => {
               className="fifth bg"
               style={{ "--own-scale": `${divScale[4]}%`, opacity: "20%" }}
             ></div>
-            <ArchiveDetail isDetailOn={isDetailOn} />
+            <ArchiveDetail
+              isDetailOn={isDetailOn}
+              setIsDetailOn={setIsDetailOn}
+              docuRef={documentRef}
+              contType={0}
+            />
           </div>
           <div
             className="archive-each"
@@ -137,7 +182,12 @@ const Archive = (props) => {
               className="fifth bg"
               style={{ "--own-scale": `${divScale[4]}%`, opacity: "20%" }}
             ></div>
-            <ArchiveDetail isDetailOn={isDetailOn} />
+            <ArchiveDetail
+              isDetailOn={isDetailOn}
+              setIsDetailOn={setIsDetailOn}
+              contType={1}
+              docuRef={documentRef}
+            />
           </div>
           <div
             className="archive-each"
@@ -176,7 +226,12 @@ const Archive = (props) => {
               className="fifth bg"
               style={{ "--own-scale": `${divScale[4]}%`, opacity: "20%" }}
             ></div>
-            <ArchiveDetail isDetailOn={isDetailOn} />
+            <ArchiveDetail
+              isDetailOn={isDetailOn}
+              setIsDetailOn={setIsDetailOn}
+              contType={2}
+              docuRef={documentRef}
+            />
           </div>
         </div>
       </div>
