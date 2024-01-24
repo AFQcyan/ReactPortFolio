@@ -31,11 +31,6 @@ const Archive = (props) => {
     document.querySelectorAll(".archive-each").forEach((x) => {
       x.style.height = githubRef.current.clientWidth + "px";
     });
-
-    document.querySelectorAll("#archive-detail button").forEach((x) => {
-      console.log(x.scrollWidth);
-      x.style.height = x.clientWidth + 6 + "px";
-    });
   }, [viewWidth]);
 
   const preventEvent = (e) => {
@@ -143,6 +138,7 @@ const Archive = (props) => {
               setIsDetailOn={setIsDetailOn}
               docuRef={documentRef}
               contType={0}
+              imgSrc={github}
             />
           </div>
           <div
@@ -187,6 +183,7 @@ const Archive = (props) => {
               setIsDetailOn={setIsDetailOn}
               contType={1}
               docuRef={documentRef}
+              imgSrc={notion}
             />
           </div>
           <div
@@ -231,6 +228,7 @@ const Archive = (props) => {
               setIsDetailOn={setIsDetailOn}
               contType={2}
               docuRef={documentRef}
+              imgSrc={tStory}
             />
           </div>
         </div>

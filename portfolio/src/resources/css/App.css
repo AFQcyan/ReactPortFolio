@@ -680,6 +680,7 @@ img {
 #archive-container {
   width: 100%;
   height: 100vh;
+  position: relative;
 }
 #archive-container > .archive-header {
   padding-top: 5rem;
@@ -703,34 +704,40 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
 }
 #archive-contents label {
   z-index: 100000;
   opacity: 1;
   transition: 0.5s;
 }
-#archive-contents img {
+#archive-contents label > img {
   width: 100%;
+  border: 2px solid rgba(0, 0, 0, 0);
+  transition: 0.5s;
 }
 #archive-contents .archive-each > div {
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: calc(var(--own-scale) / 2);
+  height: 0px;
   background-color: var(--icon-border);
-  border-radius: 100px;
   transition: 0.75s;
   z-index: 99999;
+  scale: 0;
 }
 #archive-contents .archive-each > input {
   display: none;
 }
-#archive-contents .archive-each:hover > div {
-  scale: var(--own-scale);
+#archive-contents .archive-each:hover label > img {
+  rotate: 15deg;
+  scale: 120%;
+  border: 2px solid var(--icon-border);
+  padding: 20px;
 }
 
 #archive-contents .archive-each input:checked ~ div {
-  scale: calc(var(--own-scale) * 8);
+  height: 10px;
+  width: calc(var(--own-scale) / 20);
+  scale: calc(var(--own-scale) * 6);
   z-index: 100001;
 }
 /* archive-detail */
@@ -740,35 +747,38 @@ img {
   opacity: 0;
   transition: 2s;
   position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(-35%, -50%);
+  top: 50%;
+  left: 50%;
   display: flex;
+  transform: translate(-50%, -50%);
   flex-direction: column;
   justify-content: center;
   gap: 2rem;
 }
 #archive-detail h2 {
-  color: white;
-  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black,
-    2px 2px 0 black;
+  color: black;
+  font-weight: bold;
 }
 #archive-detail * {
   color: black;
 }
+#archive-detail *:not(h3) {
+  font-weight: bold;
+}
 #archive-detail button {
-  min-width: 3.5rem;
-  padding: 0;
   margin: 0;
   border-radius: 100%;
-  background-color: rgba(0, 0, 0, 0);
-  border: 3px solid black;
   position: absolute;
+  top: 0;
   right: 0;
+  padding: 10px;
+  border: 2px solid black;
   transition: 0.5s;
   display: flex;
+  background-color: rgba(0, 0, 0, 0);
   align-items: center;
   justify-content: center;
+  z-index: 10000000;
 }
 #archive-detail button * {
   width: 1.75rem;
@@ -790,4 +800,112 @@ img {
   flex-direction: column;
   justify-content: space-between;
   height: 30vh;
+}
+/* Floating Img */
+.float,
+.fly {
+  overflow: visible;
+  scale: 70% !important;
+}
+.float {
+  animation: floatingAnime var(--anime-sec) infinite;
+}
+.fly {
+  animation: flyingAnime 9s infinite;
+  opacity: 10%;
+  left: -1000%;
+  top: -1000%;
+}
+#fly1 {
+  animation-delay: 3s;
+}
+#fly2 {
+  animation-delay: 6s;
+}
+#float0 {
+  --anime-sec: 5s;
+  --startX: 3%;
+  --endX: 3%;
+  --startY: 1%;
+  --endY: 6%;
+}
+#float1 {
+  --anime-sec: 8s;
+  --startX: -7%;
+  --endX: -7%;
+  --startY: 33%;
+  --endY: 46%;
+}
+#float2 {
+  --anime-sec: 6s;
+  --startX: 1%;
+  --endX: 1%;
+  --startY: 77%;
+  --endY: 89%;
+}
+#float3 {
+  --anime-sec: 9s;
+  --startX: 83%;
+  --endX: 83%;
+  --startY: 0%;
+  --endY: 18%;
+}
+#float4 {
+  --anime-sec: 10s;
+  --startX: 80%;
+  --endX: 80%;
+  --startY: 32%;
+  --endY: 44%;
+}
+#float5 {
+  --anime-sec: 10s;
+  --startX: 86%;
+  --endX: 86%;
+  --startY: 46%;
+  --endY: 58%;
+}
+#float6 {
+  --anime-sec: 7s;
+  --startX: 85%;
+  --endX: 85%;
+  --startY: 70%;
+  --endY: 60%;
+}
+#float7 {
+  --anime-sec: 18s;
+  --startX: -18%;
+  --endX: -18%;
+  --startY: 44%;
+  --endY: -22%;
+}
+#float8 {
+  --anime-sec: 18s;
+  --startX: 66%;
+  --endX: 66%;
+  --startY: -18%;
+  --endY: 55%;
+}
+@keyframes floatingAnime {
+  0% {
+    left: var(--startX);
+    top: var(--startY);
+  }
+  50% {
+    left: var(--endX);
+    top: var(--endY);
+  }
+  100% {
+    left: var(--startX);
+    top: var(--startY);
+  }
+}
+@keyframes flyingAnime {
+  0% {
+    left: var(--startX);
+    top: var(--startY);
+  }
+  100% {
+    left: var(--endX);
+    top: var(--endY);
+  }
 }
