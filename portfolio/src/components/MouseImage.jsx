@@ -3,9 +3,30 @@ import Container from "react-bootstrap/Container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const MouseImage = (props) => {
-  const { mousePos, mouseRotateDeg, setMouseRotateDeg } = props;
+  const {
+    mousePos,
+    mouseRotateDeg,
+    setMouseRotateDeg,
+    mouseIsBan,
+    setMouseIsBan,
+  } = props;
 
   const mouseImgRef = useRef(null);
+
+  const canScroll = useRef(null);
+  const banScroll = useRef(null);
+
+  useEffect(() => {}, []);
+
+  useEffect(() => {
+    if (mouseIsBan) {
+      canScroll.current.style.opacity = 0;
+      banScroll.current.style.opacity = 1;
+    } else {
+      canScroll.current.style.opacity = 1;
+      banScroll.current.style.opacity = 0;
+    }
+  }, [mouseIsBan]);
 
   useEffect(() => {
     mouseImgRef.current.style.left =
@@ -21,7 +42,12 @@ const MouseImage = (props) => {
   return (
     <Fragment>
       <div id="mouse-track-img" ref={mouseImgRef}>
-        <FontAwesomeIcon icon="fa-solid fa-up-down" />
+        <FontAwesomeIcon icon="fa-solid fa-up-down" ref={canScroll} />
+        <FontAwesomeIcon
+          icon="fa-solid fa-ban"
+          id="ban-scroll"
+          ref={banScroll}
+        />
       </div>
     </Fragment>
   );

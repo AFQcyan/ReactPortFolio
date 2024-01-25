@@ -42,7 +42,6 @@ const FloatingImg = (props) => {
 
     const startAnimation = (index) => {
       flyAnime[index] = setInterval(() => {
-        console.log(index + 1);
         modifyX(index);
         modifyY(index);
       }, 9000);

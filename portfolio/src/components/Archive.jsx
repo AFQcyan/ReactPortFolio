@@ -13,11 +13,12 @@ import notion from "../resources/image/MyLang/Archive/Notion.png";
 import ArchiveDetail from "./ArchiveDetail";
 
 const Archive = (props) => {
-  const { viewWidth } = props;
+  const { viewWidth, setMouseIsBan } = props;
 
   const documentRef = useRef(null);
 
   const githubRef = useRef(null);
+  const fifthRefs = [useRef(null), useRef(null), useRef(null)];
 
   const divScale = [2000, 2400, 2900, 3400, 3900];
 
@@ -26,6 +27,21 @@ const Archive = (props) => {
   // window.github = githubRef.current;
   // window.notion = notionRef.current;
   // window.tStory = tStoryRef.current;
+
+  useEffect(() => {
+    fifthRefs.forEach((eachRef) => {
+      if (eachRef.current) {
+        const curr = eachRef.current;
+        curr.addEventListener("mouseover", (e) => {
+          setMouseIsBan(true);
+        });
+
+        curr.addEventListener("mouseout", (e) => {
+          setMouseIsBan(false);
+        });
+      }
+    });
+  }, []);
 
   useEffect(() => {
     document.querySelectorAll(".archive-each").forEach((x) => {
@@ -132,6 +148,7 @@ const Archive = (props) => {
             <div
               className="fifth bg"
               style={{ "--own-scale": `${divScale[4]}%`, opacity: "20%" }}
+              ref={fifthRefs[0]}
             ></div>
             <ArchiveDetail
               isDetailOn={isDetailOn}
@@ -139,6 +156,7 @@ const Archive = (props) => {
               docuRef={documentRef}
               contType={0}
               imgSrc={github}
+              setMouseIsBan={setMouseIsBan}
             />
           </div>
           <div
@@ -177,6 +195,7 @@ const Archive = (props) => {
             <div
               className="fifth bg"
               style={{ "--own-scale": `${divScale[4]}%`, opacity: "20%" }}
+              ref={fifthRefs[1]}
             ></div>
             <ArchiveDetail
               isDetailOn={isDetailOn}
@@ -184,6 +203,7 @@ const Archive = (props) => {
               contType={1}
               docuRef={documentRef}
               imgSrc={notion}
+              setMouseIsBan={setMouseIsBan}
             />
           </div>
           <div
@@ -222,6 +242,7 @@ const Archive = (props) => {
             <div
               className="fifth bg"
               style={{ "--own-scale": `${divScale[4]}%`, opacity: "20%" }}
+              ref={fifthRefs[2]}
             ></div>
             <ArchiveDetail
               isDetailOn={isDetailOn}
@@ -229,6 +250,7 @@ const Archive = (props) => {
               contType={2}
               docuRef={documentRef}
               imgSrc={tStory}
+              setMouseIsBan={setMouseIsBan}
             />
           </div>
         </div>

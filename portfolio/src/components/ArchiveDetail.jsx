@@ -7,9 +7,31 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import FloatingImg from "./FloatingImg";
 
 const ArchiveDetail = (props) => {
-  const { isDetailOn, setIsDetailOn, contType, docuRef, imgSrc } = props;
+  const {
+    isDetailOn,
+    setIsDetailOn,
+    contType,
+    docuRef,
+    imgSrc,
+    setMouseIsBan,
+  } = props;
   const containerRefs = [useRef(null), useRef(null), useRef(null)];
   const closeBtnRefs = [useRef(null), useRef(null), useRef(null)];
+
+  const turnOffArchiveDetail = (index, isTimeout) => {
+    containerRefs[index].current.style.opacity = 0;
+    setTimeout(
+      () => {
+        setIsDetailOn([false, false, false]);
+        Array.from(docuRef.current.childNodes).map((x) => {
+          return Array.from(x.childNodes).filter((x) => {
+            return x.tagName === "INPUT";
+          });
+        })[index][0].checked = false;
+      },
+      isTimeout ? 500 : 0
+    );
+  };
 
   const colorList = ["#9b59b6", "white", "#ea5220"];
 
@@ -35,19 +57,25 @@ const ArchiveDetail = (props) => {
   }, [isDetailOn]);
 
   useEffect(() => {
+    containerRefs.forEach((eachRef) => {
+      if (eachRef.current) {
+        const curr = eachRef.current;
+        curr.addEventListener("mouseover", (e) => {
+          setMouseIsBan(true);
+        });
+
+        curr.addEventListener("mouseout", (e) => {
+          setMouseIsBan(false);
+        });
+      }
+    });
+
     closeBtnRefs.forEach((x, i) => {
       const current = x.current;
       if (current) {
-        current.addEventListener("click", (e) => {
-          containerRefs[i].current.style.opacity = 0;
-          setTimeout(() => {
-            setIsDetailOn([false, false, false]);
-            Array.from(docuRef.current.childNodes).map((x) => {
-              return Array.from(x.childNodes).filter((x) => {
-                return x.tagName === "INPUT";
-              });
-            })[i][0].checked = false;
-          }, 500);
+        turnOffArchiveDetail(i, false);
+        current.addEventListener("click", () => {
+          turnOffArchiveDetail(i, true);
         });
       }
     });
@@ -148,9 +176,16 @@ const ArchiveDetail = (props) => {
             </div>
             <div>
               <h3>ARCHIVE</h3>
-              <a href="https://github.com/AFQcyan">
+              <button
+                onClick={() => {
+                  window.location.href = "https://github.com/AFQcyan";
+                }}
+                ref={closeBtnRefs[3]}
+                className="link-btn"
+                style={{ "--need-color": colorList[typeNum] }}
+              >
                 <FontAwesomeIcon icon="fa-solid fa-link" />
-              </a>
+              </button>
               <h1>GITHUB</h1>
             </div>
             <div className="archive-txt-container">
@@ -266,9 +301,17 @@ const ArchiveDetail = (props) => {
               ></FloatingImg>
             </div>
             <h3>ARCHIVE</h3>
-            <a href="https://solid-girdle-4a8.notion.site/a5108c195fe14f899236f7ec95e14da8?v=8248d194377741a2be0a119a43cd5cbf&pvs=4">
+            <button
+              onClick={() => {
+                window.location.href =
+                  "https://solid-girdle-4a8.notion.site/a5108c195fe14f899236f7ec95e14da8?v=8248d194377741a2be0a119a43cd5cbf&pvs=4";
+              }}
+              style={{ "--need-color": colorList[typeNum] }}
+              ref={closeBtnRefs[4]}
+              className="link-btn"
+            >
               <FontAwesomeIcon icon="fa-solid fa-link" />
-            </a>
+            </button>
             <h1>NOTION</h1>
             <div className="archive-txt-container">
               <ul>
@@ -378,7 +421,16 @@ const ArchiveDetail = (props) => {
               ></FloatingImg>
             </div>
             <h3>ARCHIVE</h3>
-            <FontAwesomeIcon icon="fa-solid fa-link" />
+            <button
+              onClick={() => {
+                window.location.href = "https://amb-freak.tistory.com/";
+              }}
+              ref={closeBtnRefs[5]}
+              style={{ "--need-color": colorList[typeNum] }}
+              className="link-btn"
+            >
+              <FontAwesomeIcon icon="fa-solid fa-link" />
+            </button>
             <h1>TISTORY</h1>
             <div className="archive-txt-container">
               <ul>

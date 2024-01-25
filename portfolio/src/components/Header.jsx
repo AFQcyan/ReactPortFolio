@@ -12,11 +12,13 @@ import Skills from "./Skills";
 import ParallaxObject from "./ParallaxObject";
 import MouseImage from "./MouseImage";
 import Archive from "./Archive";
+import PortFolioGame from "./PortFolioGame";
 const Header = (props) => {
   const [currentPage, setCurrPage] = useState(0);
   const [isOnMenu, setIsOnMenu] = useState(false);
   const [mousePos, setMousePos] = useState([0, 0]);
   const [mouseRotateDeg, setMouseRotateDeg] = useState(0);
+  const [mouseIsBan, setMouseIsBan] = useState(false);
 
   const [viewWidth, setViewWidth] = useState(parseInt(window.innerWidth));
 
@@ -48,6 +50,7 @@ const Header = (props) => {
         mousePos={mousePos}
         mouseRotateDeg={mouseRotateDeg}
         setMouseRotateDeg={setMouseRotateDeg}
+        mouseIsBan={mouseIsBan}
       ></MouseImage>
       {/* <PageSideLine
         isLeft={true}
@@ -87,12 +90,16 @@ const Header = (props) => {
           ></Skills>
         </Container>
         <Container className="Contents Archives mainContainer">
-          <Archive viewWidth={viewWidth}></Archive>
+          <Archive
+            viewWidth={viewWidth}
+            setMouseIsBan={setMouseIsBan}
+          ></Archive>
         </Container>
         <Container className="Contents PortFolio mainContainer">
-          {/* 포트폴리오는 공룡게임 느낌으로 가자구. 스크롤을 한다거나와 같이,
-          어떤 이벤트에 링크된다면 움직이면서 하나씩 포트폴리오가 보이는거야. */}
-          <p>D</p>
+          <PortFolioGame
+            setMouseIsBan={setMouseIsBan}
+            setCurrPage={setCurrPage}
+          ></PortFolioGame>
         </Container>
         <Container className="Contents A mainContainer">
           <p>E</p>
