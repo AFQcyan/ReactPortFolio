@@ -97,8 +97,10 @@ const Header = (props) => {
         </Container>
         <Container className="Contents PortFolio mainContainer">
           <PortFolioGame
+            currPage={currentPage}
             setMouseIsBan={setMouseIsBan}
             setCurrPage={setCurrPage}
+            viewWidth={viewWidth}
           ></PortFolioGame>
         </Container>
         <Container className="Contents A mainContainer">
