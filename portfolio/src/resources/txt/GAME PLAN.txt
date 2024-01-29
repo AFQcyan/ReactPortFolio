@@ -2,7 +2,7 @@
 
 PHP - 인삼골주간보호센터
 Laravel - Skills Camping
-React - 당신의 인생을 선택하세요
+React - 이 사이트가 포폴이지 뭐 ㅋㅋ + 당신의 인생을 선택하세요.
 Java - YangDISQL
 .
 .

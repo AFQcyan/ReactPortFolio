@@ -12,6 +12,7 @@ import Skills from "./Skills";
 import ParallaxObject from "./ParallaxObject";
 import MouseImage from "./MouseImage";
 import Archive from "./Archive";
+import PortFolio from "./PortFolio";
 import PortFolioGame from "./PortFolioGame";
 const Header = (props) => {
   const [currentPage, setCurrPage] = useState(0);
@@ -96,12 +97,7 @@ const Header = (props) => {
           ></Archive>
         </Container>
         <Container className="Contents PortFolio mainContainer">
-          <PortFolioGame
-            currPage={currentPage}
-            setMouseIsBan={setMouseIsBan}
-            setCurrPage={setCurrPage}
-            viewWidth={viewWidth}
-          ></PortFolioGame>
+          <PortFolio setMouseRotateDeg={setMouseRotateDeg} />
         </Container>
         <Container className="Contents A mainContainer">
           <p>E</p>

@@ -929,6 +929,8 @@ img {
   width: 100%;
   height: 100vh;
   display: flex;
+  flex-direction: column;
+
   align-items: center;
   justify-content: center;
 }
@@ -938,61 +940,65 @@ img {
   gap: 1%;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 70vh;
 }
 #portfolio-container h1 {
   font-weight: bold;
 }
-#portfolio-container .btn-row button {
-  background-color: rgba(0, 0, 0, 0);
-  border: 3px solid white;
-  padding: 5px 15px;
-  margin-top: 30px;
-  font-weight: bold;
-  transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
-}
-#portfolio-container .btn-row button:hover {
-  background-color: white;
-  color: black;
-}
-#boss-is-here-container {
-  width: 20vw;
-  height: 80vh;
-  border: 3px solid white;
-}
-#game-container {
-  border: 3px solid white;
-  width: 100%;
-  width: 45vw;
-  height: 80vh;
-  overflow: hidden;
+#portfolio-choose-container {
+  width: 100vw;
+  height: 60vh;
   position: relative;
+}
+#portfolio-detail-container {
+  position: absolute;
+  width: calc(var(--portfolio-amount) * 100vw);
+  border-bottom: 5px solid white;
+  height: 55vh;
+  top: 0;
+  left: 0;
+  transition: 1.25s linear;
+  /* animation: testFor 10s infinite; */
+}
+/* @keyframes testFor {
+  0% {
+    left: 0;
+    transform: translateX(0);
+  }
+  50% {
+    left: 100%;
+    transform: translateX(-100%);
+  }
+  100% {
+    left: 0;
+    transform: translateX(0);
+  }
+} */
+#station-line {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  transform: translateY(50%);
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
-#game-container table {
-  width: 80%;
-  border: 1px solid white;
-  border: 3px solid white;
-}
-#game-container table tr td {
-  border: 1px solid white;
-  width: 10%;
-  height: 10%;
-}
-#game-container table tr td div {
+#station-line > div {
   width: 100%;
-  height: 100%;
-}
-#game-container table tr td div.selected {
-  border: 5px solid red;
-}
-#stat-container {
-  border: 3px solid white;
-  width: 100%;
-  width: 25vw;
-  height: 80vh;
-  overflow: hidden;
   position: relative;
+}
+#station-line div div {
+  width: 3rem;
+  height: 3rem;
+  border: 0.15rem solid white;
+  border-radius: 10000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 15%;
+  background-color: #fff;
+  color: black;
+  font-weight: bold;
+  font-size: 1.25rem;
 }
