@@ -16,7 +16,7 @@ const StationDot = (props) => {
   }, [activeDot]);
   return (
     <div>
-      <div>{dotIdx}</div>
+      <div>{dotIdx + 1}</div>
     </div>
   );
 };

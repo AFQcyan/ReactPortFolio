@@ -1,34 +1,74 @@
 {
   "portfolios": [
     {
+      "name": "포트폴리오 웹사이트",
+      "startDate": "2024.01",
+      "endDate": "2024.02",
+      "type": "고3 - 포트폴리오(1명)",
+      "script": "앞으로 취업세계(?) 에서 살아남기 위해 제 포트폴리오를 모아놓은 사이트가 필요할거 같다생각하여 만들게 되었습니다. 지금 보고계시는 바로 이 웹사이트 말이죠! <br> 지금껏 약했던 디자인 감각을 향상시키기 위해 <b>UI, UX</b>를 최대한으로 고려해 제작하였습니다. <b>React</b>를 사용해 제작하였으며 전과 다르게 React 표준 개발가이드에 맞게 개발하고자 노력했습니다. 전체적으로 <b>스크롤 이벤트</b>를 중점적으로 고려하여 디자인하였습니다. ",
+      "main": "아카이브 링크제공(티스토리 등등), 포트폴리오 설명, 개인정보 제공, 기술 스택",
+      "github": "https://github.com/AFQcyan/ReactPortFolio",
+      "front": "React",
+      "back": "None",
+      "database": "None",
+      "imgId": "PortFolio",
+      "imgLen": 7
+    },
+    {
       "name": "인삼골주간보호센터",
-      "date": "2022.10 ~ 2023.12",
-      "script": "PHP를 학습한후 처음으로 제작한 외주 웹사이트로, <b>PHP 풀스택</b>으로 개발했습니다. 담당 선생님의 추천으로 시작하게 된 프로젝트로 처음 초안을 완성한 후 클라이언트로부터 몇차례의 수정요청을 받아 현재는 최종완성하였습니다. 이 프로젝트를 통해 <b>클라이언트와의 업무 진행 과정</b>에 대해 알게 되었습니다. 또한 <b>MVC 모델</b>을 사용함으로서 <b>라우팅</b>에 대해 학습할수 있었고, 또한 <b>관리자 페이지</b>의 개념도 정립할 수 있었습니다. 또한 요즘 웹사이트에서 많이 쓰이는 <b>네이버 에디터</b>를 적용함으로서 새로운 프레임워크를 임포트하는 방식에도 좀더 익숙해 질수 있었습니다. 또한 모든 페이지의 <b>반응형 페이지</b>를 제작해보면서 디자인을 적용하는 감각을 키울 수 있었습니다.",
+      "startDate": "2023.05",
+      "endDate": "2023.12",
+      "type": "외주 프로젝트",
+      "script": "PHP를 학습한후 처음으로 제작한 외주 웹사이트로, <b>PHP 풀스택</b>으로 개발했습니다. <br>담당 선생님의 추천으로 시작하게 된 프로젝트로 처음 초안을 완성한 후 클라이언트로부터 몇차례의 수정요청을 받아 현재는 최종완성하였습니다. <br>이 프로젝트를 통해 <b>클라이언트와의 업무 진행 과정</b>에 대해 알게 되었습니다. 또한 <b>MVC 모델</b>을 사용함으로서 <b>라우팅</b>에 대해 학습할수 있었고,<b>관리자 페이지</b>의 개념도 정립할 수 있었습니다. <br>또한 요즘 웹사이트에서 많이 쓰이는 <b>네이버 에디터</b>를 적용함으로서 새로운 프레임워크를 임포트하는 방식에도 좀더 익숙해 질수 있었습니다. 모든 페이지의 <b>반응형 페이지</b>를 제작해보면서 다양한 환경에 디자인을 적용하는 감각을 키울 수 있었습니다.",
       "main": "센터 홍보 및 관리, 공지사항 관리, 갤러리 관리, 공지사항 첨부파일 작성",
-      "github": "https://github.com/AFQcyan/insamgolLastVersion/tree/main",
-      "front-end": "Bootstrap, Vanilla JS",
-      "back-end": "PHP",
-      "database": "MySQL"
+      "github": "https://github.com/AFQcyan/insamgolLastVersion",
+      "front": "Bootstrap, Vanilla JS",
+      "back": "PHP",
+      "database": "MySQL",
+      "imgId": "Insamgol",
+      "imgLen": 13
+    },
+    {
+      "name": "ChooseYourLife[당신의 인생을 선택하세요.]",
+      "startDate": "2023.09",
+      "endDate": "2023.09",
+      "type": "고2 - 개인프로젝트(1명)",
+      "script": "양영디지털고 2학년 재학중 중학생 체험프로그램용으로 제작한 웹 게임입니다. <b>React</b>를 학습하기 위해 제작했으나, 아예 처음 사용해봤던거라 코드의 숙련도가 높지 않음이 아쉬웠습니다. 또한 UI, UX를 고려하지 않고 개발하여서 디자인적으로 아쉬운 부분이 많았던 작품이지만, 처음으로 만들어본 스크립트형 웹 게임이었고, 프론트엔드 프레임워크를 사용해보는 경험은 처음이어서 이곳에 등재하게 됐습니다.",
+      "main": "선택지 선택, 대사 출력",
+      "github": "https://github.com/AFQcyan/ChooseYourLife",
+      "front": "React, Bootstrap",
+      "back": "None",
+      "database": "None",
+      "imgId": "CYL",
+      "imgLen": 6
     },
     {
       "name": "Skills Camping",
-      "date": "2022.10 ~ 2023.12",
-      "script": "PHP를 학습한후 처음으로 제작한 외주 웹사이트로, <b>PHP 풀스택</b>으로 개발했습니다. 담당 선생님의 추천으로 시작하게 된 프로젝트로 처음 초안을 완성한 후 클라이언트로부터 몇차례의 수정요청을 받아 현재는 최종완성하였습니다. 이 프로젝트를 통해 <b>클라이언트와의 업무 진행 과정</b>에 대해 알게 되었습니다. 또한 <b>MVC 모델</b>을 사용함으로서 <b>라우팅</b>에 대해 학습할수 있었고, 또한 <b>관리자 페이지</b>의 개념도 정립할 수 있었습니다. 또한 요즘 웹사이트에서 많이 쓰이는 <b>네이버 에디터</b>를 적용함으로서 새로운 프레임워크를 임포트하는 방식에도 좀더 익숙해 질수 있었습니다. 또한 모든 페이지의 <b>반응형 페이지</b>를 제작해보면서 디자인을 적용하는 감각을 키울 수 있었습니다.",
-      "main": "센터 홍보 및 관리, 공지사항 관리, 갤러리 관리, 공지사항 첨부파일 작성",
-      "github": "https://github.com/AFQcyan/insamgolLastVersion/tree/main",
-      "front-end": "Bootstrap, Vanilla JS",
-      "back-end": "PHP",
-      "database": "MySQL"
+      "startDate": "2023.05",
+      "endDate": "2023.05",
+      "type": "대회 문제",
+      "script": "2023 경기도 지방기능경기대회 문제로, PHP로 풀스택을 개발했었지만 <b>Laravel</b> 의 학습을 위해 Laravel 로 다시 구현하였습니다. 이 프로젝트를 통해 <b>Bash 와 Composer</b>를 활용한 프레임워크 응용에 대해 학습할 수 있었고 <b>XAMPP</b>와 호환을 통해 Laravel 의 가능성을 엿볼 수 있었습니다. <b>CSRF TOKEN</b>의 개념을 알게되었으며, 네트워크상 보안에 대한 개념을 학습할 수 있었습니다.  <br> Laravel 의 컴파일링을 숙달하는 게 어려웠던 걸 계기로 <b>실수를 기록하는 습관</b>이 생긴것도 좋은 점이라고 생각합니다.  ",
+      "main": "캠핑장 예약, 음식/메뉴 주문, 주문현황 조회, 예약/주문 관리",
+      "github": "https://github.com/AFQcyan/Skills_Camping_Laravel",
+      "front": "Vanilla JS",
+      "back": "PHP, Laravel",
+      "database": "MySQL",
+      "imgId": "Skills",
+      "imgLen": 10
     },
     {
-      "name": "Skills Camping",
-      "date": "2022.10 ~ 2023.12",
-      "script": "PHP를 학습한후 처음으로 제작한 외주 웹사이트로, <b>PHP 풀스택</b>으로 개발했습니다. 담당 선생님의 추천으로 시작하게 된 프로젝트로 처음 초안을 완성한 후 클라이언트로부터 몇차례의 수정요청을 받아 현재는 최종완성하였습니다. 이 프로젝트를 통해 <b>클라이언트와의 업무 진행 과정</b>에 대해 알게 되었습니다. 또한 <b>MVC 모델</b>을 사용함으로서 <b>라우팅</b>에 대해 학습할수 있었고, 또한 <b>관리자 페이지</b>의 개념도 정립할 수 있었습니다. 또한 요즘 웹사이트에서 많이 쓰이는 <b>네이버 에디터</b>를 적용함으로서 새로운 프레임워크를 임포트하는 방식에도 좀더 익숙해 질수 있었습니다. 또한 모든 페이지의 <b>반응형 페이지</b>를 제작해보면서 디자인을 적용하는 감각을 키울 수 있었습니다.",
-      "main": "센터 홍보 및 관리, 공지사항 관리, 갤러리 관리, 공지사항 첨부파일 작성",
-      "github": "https://github.com/AFQcyan/insamgolLastVersion/tree/main",
-      "front-end": "Bootstrap, Vanilla JS",
-      "back-end": "PHP",
-      "database": "MySQL"
+      "name": "YangDiSQL",
+      "startDate": "2023.11",
+      "endDate": "2023.12",
+      "type": "고2 - 팀 프로젝트 (3명)",
+      "script": "<b>회원정보 관리 시스템입니다.</b>양영디지털고등학교 학생들의 데이터를 기반으로 기준에 맞추어 검색하고 분류하는 사이트입니다.<b>JSP 와 Servlet</b>을 활용한 풀스택 개발로 진행했습니다. 이 과정에서 <b>CRUD</b> 를 JAVA로 웹사이트에서 구현했습니다.<br/>비록 학습용이지만 <b>ORACLE DB</b>를 사용해본 것도 좋은 경험이 되었습니다. 또한 저는 해당 프로젝트에서 리더를 맡아 팀원의 역할을 분배하고 취합하는 경험을 해보았으며, 동료들에게 우수한 평가를 받은 작품중 하나입니다.",
+      "main": "학생 정보 입력, 조건에 맞춘 검색, 학생 정보 수정및 삭제",
+      "github": "https://github.com/AFQcyan/Skills_Camping_Laravel",
+      "front": "JSP",
+      "back": "JAVA, Servlet",
+      "database": "ORACLE",
+      "imgId": "YDSQL",
+      "imgLen": 0
     }
   ]
 }

@@ -6,17 +6,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import jsonData from "../resources/json/portfolio-info.json";
 
 // component
-
 import StationDot from "../components/StationDot";
+import PortFolioDetail from "./PortFolioDetail";
+import MoveDot from "./MoveDots";
+
 const PortFolio = (props) => {
   const { setMouseRotateDeg } = props;
 
   const [activeDot, setActiveDot] = useState(0);
 
+  const [moveDotState, setMoveDotState] = useState(0);
+
   const portFolioRef = useRef(null);
   const upDownRef = useRef(null);
   const scrollingRef = useRef(null);
-  const wheelNumRef = useRef(null);
+  const wheelNumRef = useRef(0);
 
   useEffect(() => {
     console.log(jsonData.length);
@@ -30,7 +34,15 @@ const PortFolio = (props) => {
 
       if (portCont) {
         upDownRef.current = e.wheelDeltaY;
-        if (!scrollingRef.current) {
+        // console.log(wheelNumRef.current);
+        if (
+          !scrollingRef.current &&
+          !(
+            (wheelNumRef.current === 0 && upDownRef.current > 0) ||
+            (wheelNumRef.current === jsonData.portfolios.length - 1 &&
+              upDownRef.current < 0)
+          )
+        ) {
           wheelNumRef.current =
             upDownRef.current > 0
               ? wheelNumRef.current - 1
@@ -44,8 +56,10 @@ const PortFolio = (props) => {
           console.log(wheelNumRef.current);
           scrollingRef.current = true;
           clearTimeout(scrollingRef.current);
+          setMoveDotState(1);
           scrollingRef.current = setTimeout(() => {
             scrollingRef.current = false;
+            setMoveDotState(0);
           }, 1250);
         }
       }
@@ -79,9 +93,9 @@ const PortFolio = (props) => {
     });
   });
 
-  const returnDot = (portfolioNum) => {
+  const returnDot = (portFolioNum) => {
     let dmArr = [];
-    for (let i = 0; i < portfolioNum; i++) {
+    for (let i = 0; i < portFolioNum; i++) {
       dmArr.push(1);
     }
     dmArr = dmArr.map((x, i) => {
@@ -98,6 +112,24 @@ const PortFolio = (props) => {
     return dmArr;
   };
 
+  const returnDetails = (portFolioNum) => {
+    let dmArr = [];
+    for (let i = 0; i < portFolioNum; i++) {
+      dmArr.push(1);
+    }
+
+    let sortedJson = jsonData.portfolios;
+    sortedJson.sort((a, b) => {
+      return b.endDate - a.endDate;
+    });
+
+    dmArr = dmArr.map((x, i) => {
+      return <PortFolioDetail key={i} jsonData={sortedJson[i]} />;
+    });
+
+    return dmArr;
+  };
+
   return (
     <Fragment>
       <div id="portfolio-container">
@@ -107,12 +139,15 @@ const PortFolio = (props) => {
           MY PORTFOLIO
         </h1>
         <div id="portfolio-choose-container">
+          <MoveDot moveDotState={moveDotState} />
           <div
             id="portfolio-detail-container"
             ref={portFolioRef}
             style={{ "--portfolio-amount": jsonData.portfolios.length }}
           >
-            <h1>안녕하세요~~~~~~</h1>
+            <div id="portfolio-details">
+              {returnDetails(jsonData.portfolios.length)}
+            </div>
             <div id="station-line">{returnDot(jsonData.portfolios.length)}</div>
           </div>
         </div>
