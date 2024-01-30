@@ -3,10 +3,16 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import targetImg from "../resources/image/PortFolio/Insamgol/Insamgol1.png";
+const portFolioContext = require.context(
+  "../resources/image/PortFolio/",
+  false,
+  /\.(png)$/
+);
 
 const PortFolioDetail = (props) => {
   const { jsonData } = props;
+
+  console.log(portFolioContext);
 
   const returnImgs = (imgAmount) => {
     let dmArr = [];
