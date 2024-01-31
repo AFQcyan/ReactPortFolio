@@ -23,10 +23,6 @@ const PortFolio = (props) => {
   const wheelNumRef = useRef(0);
 
   useEffect(() => {
-    console.log(jsonData.length);
-  }, []);
-
-  useEffect(() => {
     const isWheel = (e) => {
       e.preventDefault();
       e.stopPropagation();

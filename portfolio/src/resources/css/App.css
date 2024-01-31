@@ -977,9 +977,12 @@ img {
   display: flex;
   justify-content: space-between;
 }
+#portfolio-details {
+  width: 3rem;
+  height: 3rem;
+}
 #portfolio-details .portfolio-detail {
   width: 100%;
-  border: 1px solid white;
   height: 65vh;
 }
 #station-line {
@@ -990,9 +993,11 @@ img {
   transform: translateY(calc(50% + 0.25rem));
   display: flex;
   justify-content: space-between;
+  z-index: 100001;
 }
 #station-line > div {
   width: 100%;
+  height: 5rem;
   position: relative;
 }
 #station-line div div {
@@ -1005,7 +1010,8 @@ img {
   align-items: center;
   position: relative;
   left: 25%;
-  /* transform: translateX(-25%); */
+  top: 50%;
+  transform: translateY(-50%);
   background-color: #fff;
   color: black;
   font-weight: bold;
@@ -1023,7 +1029,81 @@ img {
   transform: translate(-20.5%, calc(50% - 0.25rem));
   border-radius: 10000px;
   /* transition: 1s cubic-bezier(0.445, 0.95, 0.55, 0.35); */
-  /* z-index: 100000; */
+  z-index: 100000;
   transition: 0.25s ease-in-out;
   /* transition: 0.25s cubic-bezier(0.9, 2, 0.5, 0.5); */
+}
+#portfolio-details {
+  width: 100%;
+}
+.portfolio-detail {
+  display: flex;
+  width: 100vw !important;
+}
+.img-side {
+  width: 43.5%;
+  display: flex;
+  position: relative;
+  margin-left: 5%;
+  height: calc(43.5vw * (952 / 1920));
+  border: 5px solid white;
+  top: 10%;
+  overflow: hidden;
+}
+.img-side img {
+  width: 100%;
+  position: absolute;
+  filter: brightness(80%);
+  transition: 0.75s;
+}
+.txt-side {
+  width: 40%;
+}
+#next-or-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 100001;
+  display: flex;
+}
+#next-or-back > button {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transition: 0.75s;
+  font-size: 3rem;
+  padding: 3rem;
+  border: none;
+}
+#next-or-back > button > * {
+  /* color: #aaa !important; */
+}
+#next-or-back > button:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+#next-or-back .back {
+  /* background-color: rgba(247, 100, 100, 0.5); */
+  background: linear-gradient(
+    270deg,
+    rgba(0, 0, 0, 0),
+    rgba(255, 87, 87, 0.3),
+    rgba(255, 39, 39, 0.7),
+    rgba(255, 59, 59, 1)
+  );
+  border-radius: 0px 30px 30px 0;
+  justify-content: start;
+}
+#next-or-back .next {
+  /* background-color: rgba(120, 255, 172, 0.5); */
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0),
+    rgba(96, 184, 84, 0.3),
+    rgba(39, 252, 57, 0.7),
+    rgba(49, 255, 67, 1)
+  );
+  border-radius: 30px 0px 0px 30px;
+  justify-content: end;
 }
