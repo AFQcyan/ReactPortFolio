@@ -1026,7 +1026,7 @@ img {
   scale: 80%;
   transform-origin: calc(50% - 1rem) calc(100% - 0.25rem);
   bottom: 0;
-  transform: translate(-20.5%, calc(50% - 0.25rem));
+  transform: translate(-20.5%, calc(50% - 0.225rem));
   border-radius: 10000px;
   /* transition: 1s cubic-bezier(0.445, 0.95, 0.55, 0.35); */
   z-index: 100000;
@@ -1038,6 +1038,8 @@ img {
 }
 .portfolio-detail {
   display: flex;
+  gap: 5%;
+  align-items: center;
   width: 100vw !important;
 }
 .img-side {
@@ -1045,16 +1047,23 @@ img {
   display: flex;
   position: relative;
   margin-left: 5%;
+  height: calc(50vw * (952 / 1920));
+  overflow: hidden;
+}
+.img-side .show-img {
+  position: relative;
+  width: 100%;
   height: calc(43.5vw * (952 / 1920));
   border: 5px solid white;
-  top: 10%;
   overflow: hidden;
 }
 .img-side img {
   width: 100%;
   position: absolute;
-  filter: brightness(80%);
+  filter: brightness(90%);
   transition: 0.75s;
+  left: 0;
+  top: 0;
 }
 .txt-side {
   width: 40%;
@@ -1088,9 +1097,9 @@ img {
   background: linear-gradient(
     270deg,
     rgba(0, 0, 0, 0),
-    rgba(255, 87, 87, 0.3),
-    rgba(255, 39, 39, 0.7),
-    rgba(255, 59, 59, 1)
+    rgba(255, 87, 87, 0.2),
+    rgba(255, 39, 39, 0.5),
+    rgba(255, 59, 59, 0.8)
   );
   border-radius: 0px 30px 30px 0;
   justify-content: start;
@@ -1100,10 +1109,109 @@ img {
   background: linear-gradient(
     90deg,
     rgba(0, 0, 0, 0),
-    rgba(96, 184, 84, 0.3),
-    rgba(39, 252, 57, 0.7),
-    rgba(49, 255, 67, 1)
+    rgba(96, 184, 84, 0.2),
+    rgba(39, 252, 57, 0.5),
+    rgba(49, 255, 67, 0.8)
   );
   border-radius: 30px 0px 0px 30px;
   justify-content: end;
+}
+#indicator {
+  position: absolute;
+  width: 100%;
+  height: 2rem;
+  z-index: 100002;
+  top: calc(100% - 0.25rem);
+  transform: translateY(-100%);
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+}
+#indicator > div {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: #fff;
+  border-radius: 100px;
+  transition: 0.75s;
+}
+.portfolio-detail .txt-side {
+  height: 50vh;
+}
+.txt-side .txt-header p {
+  color: #aaa;
+  font-size: 0.75rem;
+}
+.txt-side p span {
+  color: #aaa;
+}
+.txt-side .txt-body {
+  text-align: left;
+  padding: 1rem;
+  font-size: 0.9rem;
+  line-height: 2rem;
+  position: relative;
+  transition: 0.75s;
+  border: 3px solid rgba(0, 0, 0, 0);
+  height: 45vh;
+}
+.txt-side .txt-body b {
+  font-size: 1rem;
+}
+.txt-side .txt-body > div {
+  position: absolute;
+  overflow: hidden;
+  transition: 0.5s;
+  top: 2rem;
+}
+.txt-side .txt-body button {
+  width: 20%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100000;
+  background-color: #222;
+  border: 3px solid white;
+  opacity: 0;
+  transition: 0.5s;
+  font-weight: bold;
+}
+.txt-body:hover > div {
+  filter: brightness(50%);
+}
+.txt-body:hover > button {
+  opacity: 1;
+}
+.part-one {
+  text-align-last: left;
+}
+.part-two {
+  padding: 1rem;
+  text-align-last: left;
+}
+.part-two h3 {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.part-two a {
+  display: block;
+  font-size: 1rem;
+  color: white;
+  text-decoration: underline;
+}
+.part-two h4 {
+  margin: 0;
+  padding: 0.25rem 0;
+}
+.part-two .lang-detail {
+  margin-top: 1rem;
+}
+.part-two .lang-detail div {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
 }

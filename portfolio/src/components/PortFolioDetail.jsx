@@ -1,12 +1,14 @@
 import { React, Fragment, useState, useEffect, useRef } from "react";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
+import ReactHtmlParser from "react-html-parser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // component
 
 import PortFolioImage from "./PortFolioImage";
 import NextOrBack from "./NextOrBack";
+import Indicator from "./Indicator";
 
 const portFolioContext = require.context(
   "../resources/image/PortFolio/",
@@ -19,17 +21,19 @@ const PortFolioDetail = (props) => {
 
   const [slideIndex, setSlideIndex] = useState(0);
   const [isIndexIncrease, setIsIndexIncrease] = useState(null);
+  const [nextSlideIndex, setNextSlideIndex] = useState(null);
+
+  const [isDetailState, setIsDetailState] = useState(0);
 
   const detailRef = useRef(null);
   const imgRef = useRef(null);
 
-  // useEffect(() => {
-  //   console.log(portFolioContext.keys());
-  // }, []);
+  const txtPartScriptRef = useRef(null);
+  const txtPartInfoRef = useRef(null);
 
   useEffect(() => {
-    console.log(slideIndex, isIndexIncrease);
-  }, [slideIndex, isIndexIncrease]);
+    console.log(slideIndex, isIndexIncrease, nextSlideIndex);
+  }, [slideIndex, isIndexIncrease, nextSlideIndex]);
 
   const returnImgs = (imgKey) => {
     const imgFiles = portFolioContext.keys().filter((x) => {
@@ -63,32 +67,115 @@ const PortFolioDetail = (props) => {
   useEffect(() => {
     const iRef = imgRef.current;
     if (iRef) {
-      const imgs = Array.from(iRef.childNodes).filter((x) => {
+      const imgs = Array.from(
+        Array.from(iRef.childNodes).filter((x) => {
+          return x.className === "show-img";
+        })[0].childNodes
+      ).filter((x) => {
         return x.tagName === "IMG";
       });
       imgs.forEach((x, i) => {
-        if (i !== slideIndex) {
-          x.style.opacity = 0;
-        } else {
+        if (i === slideIndex) {
           x.style.opacity = 1;
+          x.style.scale = "100%";
+          x.style.left = "0%";
+          x.style.rotate = "0deg";
+        } else if (i < slideIndex) {
+          x.style.opacity = 0;
+          x.style.scale = "150%";
+          x.style.left = "20%";
+          x.style.rotate = "-5deg";
+        } else {
+          x.style.opacity = 0;
+          x.style.scale = "50%";
+          x.style.left = "-20%";
+          x.style.rotate = "5deg";
         }
       });
     }
-  }, [slideIndex]);
+  }, [slideIndex, isIndexIncrease]);
+  useEffect(() => {
+    switch (isDetailState) {
+      case 0:
+        txtPartInfoRef.current.style.width = "0";
+        txtPartInfoRef.current.style.padding = "0";
+        txtPartScriptRef.current.style.width = "100%";
+        break;
+      case 1:
+        txtPartInfoRef.current.style.width = "100%";
+        txtPartInfoRef.current.style.padding = "0";
+        txtPartScriptRef.current.style.width = "0";
+        break;
+      default:
+    }
+  }, [isDetailState]);
 
   return (
     <Fragment>
       <div className="portfolio-detail" ref={detailRef}>
         <div className="img-side" ref={imgRef}>
-          <NextOrBack
-            jsonData={jsonData}
-            slideIndex={slideIndex}
-            setSlideIndex={setSlideIndex}
-            setIsIndexIncrease={setIsIndexIncrease}
-          />
-          {returnImgs(jsonData.imgId)}
+          <div className="show-img">
+            <NextOrBack
+              jsonData={jsonData}
+              slideIndex={slideIndex}
+              nextSlideIndex={nextSlideIndex}
+              setSlideIndex={setSlideIndex}
+              setIsIndexIncrease={setIsIndexIncrease}
+              setNextSlideIndex={setNextSlideIndex}
+            />
+            {returnImgs(jsonData.imgId)}
+          </div>
+          <Indicator currIdx={slideIndex} maxLen={jsonData.imgLen} />
         </div>
-        <div className="txt-side"></div>
+        <div className="txt-side">
+          <div className="txt-header">
+            <h1>{jsonData.name}</h1>
+            <p>
+              {jsonData.startDate}
+              {jsonData.startDate === jsonData.endDate
+                ? ""
+                : " - " + jsonData.endDate}{" "}
+              &nbsp;&nbsp;&nbsp;
+              <span>|</span>&nbsp;&nbsp;&nbsp;
+              {jsonData.type}
+            </p>
+          </div>
+          <div className="txt-body">
+            <button
+              id="state-change"
+              onClick={() => {
+                setIsDetailState(Math.abs(isDetailState - 1));
+              }}
+            >
+              전환
+            </button>
+            <div className="part-one" ref={txtPartScriptRef}>
+              <p>{ReactHtmlParser(jsonData.script)}</p>
+            </div>
+            <div className="part-two" ref={txtPartInfoRef}>
+              <h2>주 기능</h2>
+              <p>{jsonData.main}</p>
+              <h3>
+                <FontAwesomeIcon icon="fa-brands fa-github" size="1x" />
+                <a href={jsonData.github}>{jsonData.github}</a>
+              </h3>
+              <div className="lang-detail">
+                <div>
+                  <h4>Front-end</h4>
+                  <p>{jsonData.front}</p>
+                </div>
+                <div>
+                  <h4>Back-end</h4>
+                  <p>{jsonData.back}</p>
+                </div>
+                <div>
+                  <h4>DATABASE</h4>
+                  <p>{jsonData.database}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </Fragment>
   );

@@ -4,22 +4,50 @@ import Col from "react-bootstrap/Col";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const NextOrBack = (props) => {
-  const { jsonData, slideIndex, setSlideIndex, setIsIndexIncrease } = props;
+  const {
+    jsonData,
+    slideIndex,
+    nextSlideIndex,
+    setSlideIndex,
+    setIsIndexIncrease,
+    setNextSlideIndex,
+  } = props;
 
-  const backRef = useRef(null);
-  const nextRef = useRef(null);
+  let imgAnime = useRef(null);
+
+  const imgGoing = useRef(false);
 
   const isImgChange = (isBackBtn) => {
-    if (isBackBtn) {
-      setSlideIndex(slideIndex === 0 ? 0 : slideIndex - 1);
-      setIsIndexIncrease(false);
-    } else {
-      setSlideIndex(
-        slideIndex === jsonData.imgLen - 1
-          ? jsonData.imgLen - 1
-          : slideIndex + 1
-      );
-      setIsIndexIncrease(true);
+    if (
+      !imgGoing.current &&
+      !(
+        (slideIndex === 0 && isBackBtn) ||
+        (slideIndex === jsonData.imgLen - 1 && !isBackBtn)
+      )
+    ) {
+      if (isBackBtn) {
+        // setNextSlideIndex(slideIndex === 0 && nextSlideIndex === 1 ? 1 : slideIndex);
+        setNextSlideIndex(slideIndex + nextSlideIndex <= 1 ? 1 : slideIndex);
+        setSlideIndex(slideIndex === 0 ? 0 : slideIndex - 1);
+        setIsIndexIncrease(false);
+      } else {
+        setNextSlideIndex(
+          slideIndex + nextSlideIndex >= (jsonData.imgLen - 1) * 2 - 1
+            ? jsonData.imgLen - 2
+            : slideIndex
+        );
+        setSlideIndex(
+          slideIndex === jsonData.imgLen - 1
+            ? jsonData.imgLen - 1
+            : slideIndex + 1
+        );
+        setIsIndexIncrease(true);
+      }
+      imgGoing.current = true;
+      clearTimeout(imgAnime.current);
+      imgAnime.current = setInterval(() => {
+        imgGoing.current = false;
+      }, 750);
     }
   };
 

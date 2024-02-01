@@ -24,42 +24,44 @@ const PortFolio = (props) => {
 
   useEffect(() => {
     const isWheel = (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      const portCont = portFolioRef.current;
+      upDownRef.current = e.wheelDeltaY;
+      {
+        e.preventDefault();
+        e.stopPropagation();
+        const portCont = portFolioRef.current;
 
-      if (portCont) {
-        upDownRef.current = e.wheelDeltaY;
-        // console.log(wheelNumRef.current);
-        if (
-          !scrollingRef.current &&
-          !(
-            (wheelNumRef.current === 0 && upDownRef.current > 0) ||
-            (wheelNumRef.current === jsonData.portfolios.length - 1 &&
-              upDownRef.current < 0)
-          )
-        ) {
-          wheelNumRef.current =
-            upDownRef.current > 0
-              ? wheelNumRef.current - 1
-              : wheelNumRef.current + 1;
-          wheelNumRef.current =
-            wheelNumRef.current < 0
-              ? 0
-              : wheelNumRef.current >= jsonData.portfolios.length
-              ? jsonData.portfolios.length - 1
-              : wheelNumRef.current;
-          console.log(wheelNumRef.current);
-          scrollingRef.current = true;
-          clearTimeout(scrollingRef.current);
-          setMoveDotState(1);
-          scrollingRef.current = setTimeout(() => {
-            scrollingRef.current = false;
-            setMoveDotState(0);
-          }, 1250);
+        if (portCont) {
+          // console.log(wheelNumRef.current);
+          if (
+            !scrollingRef.current &&
+            !(
+              (wheelNumRef.current === 0 && upDownRef.current > 0) ||
+              (wheelNumRef.current === jsonData.portfolios.length - 1 &&
+                upDownRef.current < 0)
+            )
+          ) {
+            wheelNumRef.current =
+              upDownRef.current > 0
+                ? wheelNumRef.current - 1
+                : wheelNumRef.current + 1;
+            wheelNumRef.current =
+              wheelNumRef.current < 0
+                ? 0
+                : wheelNumRef.current >= jsonData.portfolios.length
+                ? jsonData.portfolios.length - 1
+                : wheelNumRef.current;
+            console.log(wheelNumRef.current);
+            scrollingRef.current = true;
+            clearTimeout(scrollingRef.current);
+            setMoveDotState(1);
+            scrollingRef.current = setTimeout(() => {
+              scrollingRef.current = false;
+              setMoveDotState(0);
+            }, 1250);
+          }
         }
+        setActiveDot(wheelNumRef.current);
       }
-      setActiveDot(wheelNumRef.current);
     };
 
     portFolioRef.current.addEventListener(

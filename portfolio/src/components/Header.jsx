@@ -13,7 +13,6 @@ import ParallaxObject from "./ParallaxObject";
 import MouseImage from "./MouseImage";
 import Archive from "./Archive";
 import PortFolio from "./PortFolio";
-import PortFolioGame from "./PortFolioGame";
 const Header = (props) => {
   const [currentPage, setCurrPage] = useState(0);
   const [isOnMenu, setIsOnMenu] = useState(false);
