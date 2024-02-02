@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const StationDot = (props) => {
-  const { dotIdx, activeDot, wheelRef, maxPortLen } = props;
+  const { dotIdx, activeDot, wheelRef } = props;
 
   useEffect(() => {
     if (wheelRef.current) {

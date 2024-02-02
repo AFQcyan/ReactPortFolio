@@ -13,6 +13,7 @@ import ParallaxObject from "./ParallaxObject";
 import MouseImage from "./MouseImage";
 import Archive from "./Archive";
 import PortFolio from "./PortFolio";
+import Contact from "./Contact";
 const Header = (props) => {
   const [currentPage, setCurrPage] = useState(0);
   const [isOnMenu, setIsOnMenu] = useState(false);
@@ -99,13 +100,7 @@ const Header = (props) => {
           <PortFolio setMouseRotateDeg={setMouseRotateDeg} />
         </Container>
         <Container className="Contents A mainContainer">
-          <p>E</p>
-        </Container>
-        <Container className="Contents A mainContainer">
-          <p>F</p>
-        </Container>
-        <Container className="Contents A mainContainer">
-          <p>G</p>
+          <Contact></Contact>
         </Container>
       </Container>
     </Fragment>

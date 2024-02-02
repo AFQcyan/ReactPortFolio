@@ -45,7 +45,7 @@ const NextOrBack = (props) => {
       }
       imgGoing.current = true;
       clearTimeout(imgAnime.current);
-      imgAnime.current = setInterval(() => {
+      imgAnime.current = setTimeout(() => {
         imgGoing.current = false;
       }, 750);
     }

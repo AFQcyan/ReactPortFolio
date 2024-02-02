@@ -1137,6 +1137,7 @@ img {
 }
 .portfolio-detail .txt-side {
   height: 50vh;
+  perspective: 3400px;
 }
 .txt-side .txt-header p {
   color: #aaa;
@@ -1147,13 +1148,18 @@ img {
 }
 .txt-side .txt-body {
   text-align: left;
-  padding: 1rem;
   font-size: 0.9rem;
   line-height: 2rem;
   position: relative;
   transition: 0.75s;
   border: 3px solid rgba(0, 0, 0, 0);
   height: 45vh;
+  width: 100%;
+  transition: 0.75s;
+  background-color: rgba(0, 0, 0, 0);
+  /* transform: perspective(10800px); */
+  perspective: 1900px;
+  display: block;
 }
 .txt-side .txt-body b {
   font-size: 1rem;
@@ -1161,41 +1167,45 @@ img {
 .txt-side .txt-body > div {
   position: absolute;
   overflow: hidden;
+  width: 100%;
   transition: 0.5s;
   top: 2rem;
+  text-align-last: left;
+  height: 35vh;
+  padding: 0rem 1rem;
+  backface-visibility: hidden;
 }
-.txt-side .txt-body button {
-  width: 20%;
+.txt-side .txt-body span {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 100000;
-  background-color: #222;
-  border: 3px solid white;
   opacity: 0;
-  transition: 0.5s;
-  font-weight: bold;
+  transition: 0.75s;
+  display: block;
+  width: 80%;
+  height: 35vh;
+  animation: key 5s infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate3D(-50%, -50%, 0px) rotateX(75deg);
+  z-index: 100010;
 }
-.txt-body:hover > div {
-  filter: brightness(50%);
+.txt-side .txt-body span * {
+  font-size: 20rem;
 }
-.txt-body:hover > button {
+.txt-body:hover {
+  border: 3px solid #fff;
+}
+.txt-body:hover span {
   opacity: 1;
 }
-.part-one {
-  text-align-last: left;
-}
-.part-two {
-  padding: 1rem;
-  text-align-last: left;
-}
-.part-two h3 {
+.part-two h5 {
   display: flex;
   justify-content: start;
   align-items: center;
   gap: 1rem;
-  margin-top: 1rem;
+  margin-top: 0.25rem;
 }
 .part-two a {
   display: block;
@@ -1205,7 +1215,7 @@ img {
 }
 .part-two h4 {
   margin: 0;
-  padding: 0.25rem 0;
+  padding: 0.15rem 0;
 }
 .part-two .lang-detail {
   margin-top: 1rem;
@@ -1214,4 +1224,35 @@ img {
   display: flex;
   gap: 2rem;
   align-items: center;
+}
+/* Contact */
+#contact-container h1 {
+  height: max-content;
+}
+#contact-detail {
+  height: 70vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  perspective: 30px;
+  position: relative;
+  transition: 10s;
+}
+
+#contact-line {
+  position: relative;
+  width: 3rem;
+  height: 100%;
+  background-color: #fff;
+  transition: 1s;
+  top: 20%;
+  transform: translate3D(0, 0, 0) rotateX(30deg);
+}
+.middle-line {
+  position: absolute;
+  height: 100%;
+  width: 0.15rem;
+  border: 3px dotted black;
+  left: 50%;
+  transform: translateX(-50%);
 }

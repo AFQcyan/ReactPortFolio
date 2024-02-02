@@ -1,4 +1,4 @@
-import { React, Fragment, useEffect } from "react";
+import { React, Fragment, useEffect, useRef } from "react";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 
@@ -6,9 +6,11 @@ const MoveToMenu = (props) => {
   const { currPage, currPageHandler, setIsOnMenu } = props;
 
   //   scroll
-  function handleScroll() {
-    return window.scrollY % window.innerHeight !== 0;
-  }
+
+  const isScroll = useRef(false);
+  const scrollTimer = useRef(null);
+
+  let currPageDummy = useRef(0);
 
   useEffect(() => {
     window.scrollTo({ left: 0, top: 0 });
@@ -23,49 +25,47 @@ const MoveToMenu = (props) => {
       e.preventDefault();
     }
   });
-  let scrollEndTimer;
-  document.onscroll = (e) => {
-    clearTimeout(scrollEndTimer);
-    scrollEndTimer = setTimeout(function () {
-      currPageHandler(Math.round(window.scrollY / window.innerHeight));
-    }, 5);
-  };
-  const effectEvent = (e) => {
+  // let scrollEndTimer;
+  // document.onscroll = (e) => {
+  //   console.log(e);
+  //   clearTimeout(scrollEndTimer);
+  //   scrollEndTimer = setTimeout(function () {
+  //     currPageHandler(Math.round(window.scrollY / window.innerHeight));
+  //   }, 5);
+  // };
+
+  const isMouseWheel = (e) => {
     e.preventDefault();
-    if (!handleScroll()) {
-      let currentPage = currPage;
+    if (!isScroll.current) {
       if (e.deltaY < 0) {
-        currentPage = currentPage === 0 ? 0 : currentPage - 1;
+        // crPage = crPage === 0 ? 0 : crPage - 1;
+        currPageHandler(
+          currPageDummy.current === 0 ? 0 : currPageDummy.current - 1
+        );
       } else {
-        currentPage = currentPage === 7 ? 7 : currentPage + 1;
+        currPageHandler(
+          currPageDummy.current === 7 ? 7 : currPageDummy.current + 1
+        );
+        // crPage = crPage === 7 ? 7 : crPage + 1;
       }
-      window.scrollTo({ left: 0, top: currentPage * window.innerHeight });
+      console.log("inFunc : " + currPageDummy.current);
+      isScroll.current = true;
+      clearTimeout(scrollTimer.current);
+      scrollTimer.current = setTimeout(function () {
+        isScroll.current = false;
+      }, 500);
     }
   };
   useEffect(() => {
-    window.addEventListener("wheel", effectEvent, { passive: false });
+    currPageDummy.current = currPage;
+    window.scrollTo({ left: 0, top: currPage * window.innerHeight });
+    console.log(currPage);
+  }, [currPage]);
+  useEffect(() => {
+    console.log(isScroll.current);
+  }, [isScroll]);
 
-    // 컴포넌트가 언마운트되면 이벤트 핸들러를 제거
-    return () => {
-      window.removeEventListener("wheel", effectEvent, { passive: false });
-    };
-  }, []);
-  window.addEventListener(
-    "wheel",
-    (e) => {
-      e.preventDefault();
-      let currentPage = currPage;
-      if (!handleScroll()) {
-        if (e.deltaY < 0) {
-          currentPage = currentPage === 0 ? 0 : currentPage - 1;
-        } else {
-          currentPage = currentPage === 7 ? 7 : currentPage + 1;
-        }
-        window.scrollTo({ left: 0, top: currentPage * window.innerHeight });
-      }
-    },
-    { passive: false }
-  );
+  window.addEventListener("wheel", isMouseWheel, { passive: false });
 
   function checkMenuState(e) {
     if (e.target.checked) {

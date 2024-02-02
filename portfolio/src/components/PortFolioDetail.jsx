@@ -27,9 +27,11 @@ const PortFolioDetail = (props) => {
 
   const detailRef = useRef(null);
   const imgRef = useRef(null);
+  const txtBodyRef = useRef(null);
 
   const txtPartScriptRef = useRef(null);
   const txtPartInfoRef = useRef(null);
+  const stateChangeBtnRef = useRef(null);
 
   useEffect(() => {
     console.log(slideIndex, isIndexIncrease, nextSlideIndex);
@@ -97,14 +99,20 @@ const PortFolioDetail = (props) => {
   useEffect(() => {
     switch (isDetailState) {
       case 0:
-        txtPartInfoRef.current.style.width = "0";
+        txtPartInfoRef.current.style.transform =
+          "translate3D(0%, 0%, 0px) rotateY(180deg)";
         txtPartInfoRef.current.style.padding = "0";
-        txtPartScriptRef.current.style.width = "100%";
+        txtPartScriptRef.current.style.transform =
+          "translate3D(0%, 0%, 0px) rotateY(360deg)";
+        txtPartScriptRef.current.style.padding = "0rem 1rem";
         break;
       case 1:
-        txtPartInfoRef.current.style.width = "100%";
-        txtPartInfoRef.current.style.padding = "0";
-        txtPartScriptRef.current.style.width = "0";
+        txtPartInfoRef.current.style.transform =
+          "translate3D(0%, 0%, 0px) rotateY(0deg)";
+        txtPartInfoRef.current.style.padding = "0rem 1rem";
+        txtPartScriptRef.current.style.transform =
+          "translate3D(0%, 0%, 0px) rotateY(180deg)";
+        txtPartScriptRef.current.style.padding = "0";
         break;
       default:
     }
@@ -140,25 +148,30 @@ const PortFolioDetail = (props) => {
               {jsonData.type}
             </p>
           </div>
-          <div className="txt-body">
-            <button
-              id="state-change"
-              onClick={() => {
-                setIsDetailState(Math.abs(isDetailState - 1));
-              }}
-            >
-              전환
-            </button>
+          <button
+            className="txt-body"
+            ref={txtBodyRef}
+            onClick={() => {
+              setIsDetailState(Math.abs(isDetailState - 1));
+            }}
+          >
+            {/* <span>
+              <FontAwesomeIcon icon="fa-solid fa-rotate-right" spin />
+            </span> */}
             <div className="part-one" ref={txtPartScriptRef}>
               <p>{ReactHtmlParser(jsonData.script)}</p>
             </div>
             <div className="part-two" ref={txtPartInfoRef}>
               <h2>주 기능</h2>
               <p>{jsonData.main}</p>
-              <h3>
+              <h5>
                 <FontAwesomeIcon icon="fa-brands fa-github" size="1x" />
                 <a href={jsonData.github}>{jsonData.github}</a>
-              </h3>
+              </h5>
+              <h5>
+                <FontAwesomeIcon icon="fa-solid fa-link" />
+                <a href={jsonData.github}>{jsonData.github}</a>
+              </h5>
               <div className="lang-detail">
                 <div>
                   <h4>Front-end</h4>
@@ -174,7 +187,7 @@ const PortFolioDetail = (props) => {
                 </div>
               </div>
             </div>
-          </div>
+          </button>
         </div>
       </div>
     </Fragment>
