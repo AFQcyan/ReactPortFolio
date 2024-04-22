@@ -1,0 +1,12 @@
+#a:checked ~ .gallary-cont {
+    display: none;
+}
+
+~ > + 
+
+span ~ a {
+    자기랑 같은 계층에 있는 모든 형제 
+}
+span + a {
+    자기랑 같은 계층에 있는 바로 밑에(딱 1개만 잡음) > 인접 연산자
+}
