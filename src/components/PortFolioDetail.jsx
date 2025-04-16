@@ -1,7 +1,6 @@
 import { React, Fragment, useState, useEffect, useRef } from "react";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
-import ReactHtmlParser from "react-html-parser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // component
@@ -159,7 +158,7 @@ const PortFolioDetail = (props) => {
               <FontAwesomeIcon icon="fa-solid fa-rotate-right" spin />
             </span> */}
             <div className="part-one" ref={txtPartScriptRef}>
-              <p>{ReactHtmlParser(jsonData.script)}</p>
+              <p>{jsonData.script}</p>
             </div>
             <div className="part-two" ref={txtPartInfoRef}>
               <h2>주 기능</h2>
