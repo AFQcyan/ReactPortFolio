@@ -1,6 +1,11 @@
 import "./resources/css/App.css";
 import { React } from "react";
 import IndexPage from "./components/IndexPage";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faBan, faUpDown } from '@fortawesome/free-solid-svg-icons';
+
+// 2. 라이브러리에 아이콘을 추가합니다.
+library.add(faBan, faUpDown);
 
 function App() {
   document.onContextMenu = function () {
