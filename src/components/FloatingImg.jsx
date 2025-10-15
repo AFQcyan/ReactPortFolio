@@ -2,7 +2,6 @@ import { React, Fragment, useState, useEffect, useRef, useMemo } from "react";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const FloatingImg = (props) => {
   const { imgSrc, floatingType, imgIndex } = props;

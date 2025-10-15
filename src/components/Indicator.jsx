@@ -1,7 +1,6 @@
 import { React, Fragment, useState, useEffect, useRef } from "react";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Indicator = (props) => {
   const { currIdx, maxLen } = props;
