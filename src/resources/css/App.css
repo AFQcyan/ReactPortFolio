@@ -524,13 +524,13 @@ img {
   gap: 25%;
 }
 #parallax-container .skills-container {
-  width: 30%;
+  width: 27.5%;
   border: 1px solid white;
   padding: 1.5rem;
-  height: 75% !important;
+  height: 80% !important;
   border-radius: 1rem;
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 80%;
   /* transform: translateX(-50%) translateY(-50%); */
   transition: 1s;

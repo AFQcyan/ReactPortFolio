@@ -19,7 +19,6 @@ import cerfSemiITQPowerPoint from "../resources/image/MyLang/certification/Power
 import cerfSemiITQExcel from "../resources/image/MyLang/certification/Excel.png";
 import cerfSemiITQHangeul from "../resources/image/MyLang/certification/Hangeul.png";
 
-import frontImgBootstrap from "../resources/image/MyLang/Front-End/Bootstrap.png";
 import frontImgCSS3 from "../resources/image/MyLang/Front-End/CSS3.png";
 import frontImgHTML5 from "../resources/image/MyLang/Front-End/HTML5.png";
 import frontImgJQuery from "../resources/image/MyLang/Front-End/jQuery.png";
@@ -144,17 +143,6 @@ const ParallaxObject = (props) => {
                 20%
               </div>
               <img src={frontImgWebPack} alt="WebPack" title="WebPack" />
-            </Col>
-          </Row>
-          <Row>
-            <Col className="skill-img-cont" lg={12}>
-              <div
-                className="percenttage horizontal"
-                style={{ "--perc": "60%" }}
-              >
-                60%
-              </div>
-              <img src={frontImgBootstrap} alt="Bootstrap" title="Bootstrap" />
             </Col>
           </Row>
         </div>
