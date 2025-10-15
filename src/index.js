@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 // css
 import "bootstrap/dist/css/bootstrap.min.css";
 // js
-import "./resources/fontawesome/js/all.min.js";
 import "bootstrap/dist/js/bootstrap";
 import App from "./App.jsx";
 import reportWebVitals from "./reportWebVitals";
