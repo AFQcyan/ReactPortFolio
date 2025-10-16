@@ -18,8 +18,8 @@ const Contact = (props) => {
         <div id="contact-detail">
           <div id="contact-left"></div>
           <div id="contact-line">
-            <div class="middle-line"></div>
-            <div class="middle-line"></div>
+            <div class="middle-line n20"></div>
+            <div class="middle-line n21"></div>
           </div>
           <div id="contact-right"></div>
         </div>
